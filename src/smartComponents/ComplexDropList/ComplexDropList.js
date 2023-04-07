@@ -41,7 +41,7 @@ export const ComplexDropList = ({ complexId, onChangeComplex }) => {
     <div>
       <div className={styles["complex-drop-list-query"]}>
         <p>
-          <span>איזה ארגון?</span>
+          <span>Which Organization?</span>
         </p>
       </div>
       <DropList
@@ -56,7 +56,7 @@ export const ComplexDropList = ({ complexId, onChangeComplex }) => {
         <>
           <div className={styles["complex-drop-list-query"]}>
             <p>
-              <span>איזה מתחם?</span>
+              <span>Which Complex?</span>
             </p>
           </div>
           <DropList

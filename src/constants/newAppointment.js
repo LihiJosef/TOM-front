@@ -94,7 +94,7 @@ export const ID_MAX_LENGTH = 9;
 export const PHONE_MAX_LENGTH = 10;
 
 export const titles = {
-  [orderFor.me]: "הטלפון שלך",
+  [orderFor.me]: "Your Phone Number",
   [orderFor.someoneElse]: "בשביל מי העמדה?"
 };
 

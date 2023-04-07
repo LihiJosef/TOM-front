@@ -144,7 +144,7 @@ export default forwardRef(function NewAppointmentInfo({ setPropsButtonNext, ...p
       <ComplexDropList complexId={complexId} onChangeComplex={onChangeComplex} />
       <div className={style["title"]}>
         <p>
-          <span>מהו סוג העמדה?</span>
+          <span>Which Station Type?</span>
         </p>
       </div>
       <StationType
@@ -156,7 +156,7 @@ export default forwardRef(function NewAppointmentInfo({ setPropsButtonNext, ...p
       />
       <div className={style["title"]}>
         <p>
-          <span>מהי מטרת ההזמנה?</span>
+          <span>What Is The Order's Purpose?</span>
         </p>
       </div>
       <Input
@@ -174,7 +174,7 @@ export default forwardRef(function NewAppointmentInfo({ setPropsButtonNext, ...p
       />
       <div className={style["title"]}>
         <p>
-          <span>עבור מי ההזמנה?</span>
+          <span>Who Is The Order For?</span>
         </p>
       </div>
       <div className={style["button-group"]}>
