@@ -51,7 +51,7 @@ export const propsDesignNavigationPad = {
 };
 
 export const propsDesignDialog = {
-  messages: { ok: "צפייה בהזמנות", cancel: "הזמנה חדשה" },
+  messages: { ok: "View My Orders", cancel: "New Order" },
   propsButtonOk: {
     color: "#fff",
     fullWidth: true,

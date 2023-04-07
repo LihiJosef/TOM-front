@@ -46,7 +46,7 @@ export default forwardRef(function NewAppointmentGuidelines(
       isDisabled: false,
       loading: loadingBack,
       textLabelLoading: "Looking For Free Slots...",
-      textLabel: "Confirm..."
+      textLabel: "Confirm"
     });
   }, [loadingBack]);
 

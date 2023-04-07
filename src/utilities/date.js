@@ -8,8 +8,8 @@ moment.locale("he");
 export const getFullDate = date => moment(date).format("YYYY-MM-DD");
 
 export const getHourSpan = appointment => {
-  return `${getDateWithFormat(appointment?.end_datetime, dateFormat.TIME)} - 
-  ${getDateWithFormat(appointment?.start_datetime, dateFormat.TIME)}`;
+  return `${getDateWithFormat(appointment?.start_datetime, dateFormat.TIME)} - 
+  ${getDateWithFormat(appointment?.end_datetime, dateFormat.TIME)}`;
 };
 
 //Get time with format
