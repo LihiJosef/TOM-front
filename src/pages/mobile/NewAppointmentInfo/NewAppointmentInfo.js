@@ -81,8 +81,8 @@ export default forwardRef(function NewAppointmentInfo({ setPropsButtonNext, ...p
         !isDisabled || isNullOrUndefinedOrEmpty(complexId) || isNullOrUndefinedOrEmpty(stationId)
           ? "Find Free Station"
           : orderForIndex === orderFor.me
-          ? "יש למלא מספר טלפון"
-          : "יש למלא את פרטי המוזמן"
+          ? "Please Fill Phone Number"
+          : "Please Fill Details"
     });
   }, [userInfo, orderForIndex, loadingNext, stationId, complexId]);
 
