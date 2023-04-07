@@ -18,17 +18,28 @@ const getUserMsg = ({ isMaxExceeded, maxNum, endHour }) => {
   if (isMaxExceeded) {
     return {
       title: (
-        <span>
-          לא ניתן לבצע יותר מ-{maxNum} הזמנות ביום. אפשר להזמין עמדה ליום אחר או לבטל את אחת ההזמנות של יום זה
+        <span className={styles["time-messages"]}>
+          {/* לא ניתן לבצע יותר מ-{maxNum} הזמנות ביום. אפשר להזמין עמדה ליום אחר או לבטל את אחת ההזמנות של יום זה */}
+          You can not order more than {maxNum} orders in the same day. You can order for other day or cancel
+          other order from this day
         </span>
       )
     };
   } else if (isTimeComparedSmallCurrentTime(endHour)) {
-    return { title: <span>עבר זמן פעילות</span>, img: <PositionsAreOccupiedImg /> };
+    // return { title: <span>עבר זמן פעילות</span>, img: <PositionsAreOccupiedImg /> };
+    return {
+      title: <span className={styles["time-messages"]}>Time Passed</span>,
+      img: <PositionsAreOccupiedImg />
+    };
   } else {
     // else
     return {
-      title: <span>לא נמצאה שעה פנויה לביצוע הזמנה בתאריך זה</span>,
+      // title: <span>לא נמצאה שעה פנויה לביצוע הזמנה בתאריך זה</span>,
+      title: (
+        <span className={styles["time-messages"]}>
+          No available time was found to make an order on this date
+        </span>
+      ),
       img: <PositionsAreOccupiedImg />
     };
   }
@@ -64,7 +75,7 @@ export const TimePicker = ({
         <div>
           <div className={styles["empty-positions-query"]}>
             <p>
-              <span>באיזו שעה?</span>
+              <span>What Time?</span>
             </p>
           </div>
           <GridButtons
@@ -76,9 +87,10 @@ export const TimePicker = ({
             itemSelectionMap={timeSelectionMap}
           />
           {!loadingTime && (
-            <div>
+            <div className={styles["time-messages"]}>
               <p>
-                <span>{`אורך תור הוא למשך ${intervalTime} דקות, במידה ויש צורך ביותר, ניתן לקבוע תור נוסף`}</span>
+                {/* <span>{`ארך תור הוא למשך ${intervalTime} דקות, במידה ויש צורך ביותר, ניתן לקבוע תור נוסף`}</span> */}
+                <span>{`The legnth for each appointment is for ${intervalTime} minutes, If necessary, you can schedule another appointment.`}</span>
               </p>
             </div>
           )}

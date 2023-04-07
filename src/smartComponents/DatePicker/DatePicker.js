@@ -95,7 +95,7 @@ export const DatePicker = ({ minDate, maxDate, objWeekdaysActive, onChange }) =>
     <div id={COMPONENT_IDS.CUSTOMER.INPUTS.ORDER_DATE}>
       <div className={styles["date-picker-query"]}>
         <p>
-          <span>למתי לקבוע?</span>
+          <span>When To Determine?</span>
         </p>
       </div>
       {data.length > 0 && objWeekdaysActive ? (
