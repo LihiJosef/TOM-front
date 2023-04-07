@@ -79,13 +79,13 @@ export const buttons = [
   {
     id: COMPONENT_IDS.CUSTOMER.BUTTONS.ORDER_FOR_ME,
     index: orderFor.me,
-    label: "בשבילי",
+    label: "For Me",
     image: <OrderForMe />
   }
   // {
   //   id: COMPONENT_IDS.CUSTOMER.BUTTONS.ORDER_FOR_SOMEONE_ELSE,
   //   index: orderFor.someoneElse,
-  //   label: "מישהו אחר",
+  //   label: "For Other",
   //   image: <OrderForSomeone />
   // }
 ];
