@@ -76,7 +76,7 @@ export const DropList = ({
           onChange={handleChange}
           value={!loading ? valueState : null}
           disabled={loading ? true : disabled}
-          style={{ ...(fullWidth ? {} : { width: width < 100 ? 100 : width }) }}
+          style={{ ...(fullWidth ? {} : { width: width < 100 ? 100 : width }), textAlign: "left" }}
           {...(!disabled
             ? { onMouseEnter: () => setBgColor(dark), onMouseLeave: () => setBgColor(normal) }
             : {})}

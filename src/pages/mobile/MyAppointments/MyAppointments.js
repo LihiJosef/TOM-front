@@ -98,7 +98,7 @@ export default function MyAppointments() {
             id={COMPONENT_IDS.CUSTOMER.BUTTONS.NEW_ORDER}
             isDisabled={loading}
             onClick={onClick}
-            textLabel={" הזמנה חדשה"}
+            textLabel={"New Order"}
           />
         </div>
       ) : (

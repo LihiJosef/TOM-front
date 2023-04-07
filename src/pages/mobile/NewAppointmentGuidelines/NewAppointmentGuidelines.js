@@ -35,8 +35,8 @@ export default forwardRef(function NewAppointmentGuidelines(
       id: COMPONENT_IDS.CUSTOMER.BUTTONS.AGREE_TO_GUIDLINES,
       isDisabled: false,
       loading: loadingNext,
-      textLabelLoading: "מאשרים לך את ההזמנה...",
-      textLabel: "קראתי והבנתי"
+      textLabelLoading: "We Are Creating Your Order...",
+      textLabel: "Confirm"
     });
   }, [loadingNext]);
 
@@ -45,8 +45,8 @@ export default forwardRef(function NewAppointmentGuidelines(
       id: COMPONENT_IDS.CUSTOMER.BUTTONS.AGREE_TO_GUIDLINES,
       isDisabled: false,
       loading: loadingBack,
-      textLabelLoading: "מחפשים זמנים פנויים...",
-      textLabel: "קראתי והבנתי"
+      textLabelLoading: "Looking For Free Slots...",
+      textLabel: "Confirm"
     });
   }, [loadingBack]);
 
@@ -102,7 +102,7 @@ export default forwardRef(function NewAppointmentGuidelines(
   return (
     <>
       <div className={style["guidlines"]}>
-        {complexGuidelines(complexId)}
+        {complexGuidelines()}
         {/* not show entryPermitsGuidelines in order to be generic 17/6/21 */}
         {/* {entryPermitsGuidelines(user.serviceType)} */}
       </div>

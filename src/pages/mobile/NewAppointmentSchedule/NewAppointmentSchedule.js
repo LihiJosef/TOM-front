@@ -71,8 +71,8 @@ export default forwardRef(function NewAppointmentSchedule(
       id: COMPONENT_IDS.CUSTOMER.BUTTONS.PLACE_ORDER,
       isDisabled: !isTimeSelected(timeSelectionMap),
       loading: loadingNext,
-      textLabelLoading: "שומרים לך עמדה...",
-      textLabel: isTimeSelected(timeSelectionMap) ? "קבענו?" : "יש לבחור שעה"
+      textLabelLoading: "Saving Station For You...",
+      textLabel: isTimeSelected(timeSelectionMap) ? "Determine?" : "Please Choose Hour"
     });
   }, [timeSelectionMap, loadingNext]);
 

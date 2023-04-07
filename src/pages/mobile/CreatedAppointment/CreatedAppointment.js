@@ -34,14 +34,14 @@ export default function CreatedAppointment({ infoList, goBack, goNext }) {
       style={{ height: width < 768 ? height - 115 : `calc(${height - 115}px - 5vh)` }}
     >
       <div>
-        <h2>קבענו!</h2>
+        <h2>Your Appointment Created!</h2>
         {infoList?.length && (
           <p className={styles["info"]}>
             <span>
-              {`שמרנו לך את עמדה ${getStationInfo()}`} <br />
-              {`לתאריך ${getDateWithFormat(infoList[0].start_datetime, dateFormat.DATE_DOTS_NO_YEAR)}`}
+              {`We Saved You Station ${getStationInfo()}`} <br />
+              {`In Date ${getDateWithFormat(infoList[0].start_datetime, dateFormat.DATE_DOTS_NO_YEAR)}`}
               <br />
-              בין השעות{" "}
+              At{" "}
               {infoList.map(info => (
                 <>
                   {getHourSpan(info)}
@@ -61,7 +61,7 @@ export default function CreatedAppointment({ infoList, goBack, goNext }) {
               colorOutline={backgroundColor.darkGreen}
               size={width > 340 ? "large" : width > 300 ? "medium" : "small"}
             >
-              הזמנה נוספת
+              New Order
             </Button>
           </div>
           <div className={styles["button"]}>
@@ -72,7 +72,7 @@ export default function CreatedAppointment({ infoList, goBack, goNext }) {
               backgroundColor={backgroundColor.darkGreen}
               size={width > 340 ? "large" : width > 300 ? "medium" : "small"}
             >
-              צפייה בהזמנות
+              View My Orders
             </Button>
           </div>
         </div>
