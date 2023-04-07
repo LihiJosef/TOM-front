@@ -76,10 +76,10 @@ export default forwardRef(function NewAppointmentInfo({ setPropsButtonNext, ...p
       id: COMPONENT_IDS.CUSTOMER.BUTTONS.FIND_STATIONS,
       isDisabled,
       loading: loadingNext,
-      textLabelLoading: "מחפשים זמנים פנויים...",
+      textLabelLoading: "Looking For Free Slots...",
       textLabel:
         !isDisabled || isNullOrUndefinedOrEmpty(complexId) || isNullOrUndefinedOrEmpty(stationId)
-          ? "מציאת עמדה פנויה"
+          ? "Find Free Station"
           : orderForIndex === orderFor.me
           ? "יש למלא מספר טלפון"
           : "יש למלא את פרטי המוזמן"
