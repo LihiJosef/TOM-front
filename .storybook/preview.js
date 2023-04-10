@@ -6,7 +6,7 @@ export const parameters = {
 
 export const decorators = [
   Story => (
-    <div dir="rtl" style={{direction: "rtl"}}>
+    <div dir="ltr" style={{direction: "ltr"}}>
       <MuiTheme>
         <Story />
       </MuiTheme>

@@ -69,12 +69,12 @@ export const NavigationPad = ({
         <button
           type="button"
           id="button-icon-right"
-          onClick={() => handleClick("right")}
+          onClick={() => handleClick("left")}
           className={style["button-icons-arrow"]}
           disabled={minDate ? isAfterMinDate() : false}
         >
           <span className={style["icons-arrow"]}>
-            <ArrowRight />
+            <ArrowLeft />
           </span>
         </button>
         <div className={style["between-icons"]}>
@@ -96,7 +96,7 @@ export const NavigationPad = ({
           disabled={maxDate ? isBeforeMaxDate() : false}
         >
           <span className={style["icons-arrow"]}>
-            <ArrowLeft />
+            <ArrowRight />
           </span>
         </button>
       </div>

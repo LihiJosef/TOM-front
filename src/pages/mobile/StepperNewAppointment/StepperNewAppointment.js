@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 
 // Material-ui
 import { IconButton } from "@material-ui/core";
-import { ArrowForward } from "@material-ui/icons";
+import { ArrowBack } from "@material-ui/icons";
 
 // Style
 import "./transition.scss";
@@ -136,7 +136,7 @@ export default function StepperNewAppointment() {
       {pagesInOrder[state?.index]?.isDisplayButtonBack && (
         <div className={styles["header"]}>
           <IconButton onClick={onClickBack} classes={{ root: styles["go-back-button"] }}>
-            <ArrowForward />
+            <ArrowBack />
           </IconButton>
         </div>
       )}
