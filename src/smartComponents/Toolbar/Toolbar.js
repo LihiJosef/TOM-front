@@ -135,7 +135,7 @@ export const Toolbar = ({
           {...design}
           onClick={() => setDate(getDateActiveIncrement(Object.keys(weekdaysActivityTime), new Date()))}
         >
-          {"היום"}
+          {"Today"}
         </Button>
         <div className={styles["date-navigator"]}>
           <Button

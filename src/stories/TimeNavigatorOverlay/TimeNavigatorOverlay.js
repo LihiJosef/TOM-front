@@ -2,7 +2,6 @@ import { useState } from "react";
 import { string, func, oneOfType, instanceOf } from "prop-types";
 
 // Utilities
-import heLocale from "date-fns/locale/he";
 import DateFnsUtils from "@date-io/date-fns";
 
 // Design component
@@ -83,7 +82,7 @@ export const TimeNavigatorOverlay = ({ labelButton, date, onChange, PropsButton 
           </button>
         </div>
         <ThemeProvider theme={defaultMaterialTheme}>
-          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={heLocale}>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <ClockView
               ampm={false}
               date={dateState}

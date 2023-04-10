@@ -9,7 +9,7 @@ const Template = args => <DateNavigatorOverlay {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  label: "roni",
+  label: "date",
   outline: true,
   date: new Date(),
   typeComponentDisplay: "Button"
