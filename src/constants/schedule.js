@@ -6,8 +6,8 @@ export const messagesDialogCancelStation = {
   title: "להקפיא את העמדה?"
 };
 export const messagesDialogCreateAppointment = {
-  messages: { ok: "שמירה", cancel: "ביטול" },
-  title: "הזמנה חדשה"
+  messages: { ok: "Save", cancel: "Cancel" },
+  title: "Create Order"
 };
 
 export const backgroundColorAdmin = {

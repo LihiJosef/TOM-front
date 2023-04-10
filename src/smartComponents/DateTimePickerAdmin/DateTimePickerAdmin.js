@@ -123,7 +123,7 @@ export const TimePickerAdmin = ({
         );
       } else {
         setArrayTimes(null);
-        setMassageError("לא ניתן לקבוע יותר הזמנות לעמדה זו");
+        setMassageError("Unable to book more orders for this station");
       }
       setLoading(false);
     } else {
@@ -184,20 +184,20 @@ export const TimePickerAdmin = ({
           PropsComponent={{
             id: COMPONENT_IDS.ADMIN.DROPDOWNS.ORDER_DATE,
             shape: "square",
-            placeholder: "בחירת תאריך",
+            placeholder: "Choose date",
             backgroundColor: backgroundColorAdmin.normal
           }}
         />
         <p className={style["text-error"]}>
           {isMaxExceeded
-            ? `עד ${maxPossibleAppointments} הזמנות ביום`
+            ? `Max ${maxPossibleAppointments} orders per day`
             : massageError
             ? massageError
             : massageError}
         </p>
       </div>
       <div className={style["time-picker"]}>
-        <p className={style["text"]}>{"משעה"}</p>
+        <p className={style["text"]}>{"Start"}</p>
         <DropList
           id={COMPONENT_IDS.ADMIN.DROPDOWNS.ORDER_START_TIME}
           shape={"square"}
@@ -208,7 +208,7 @@ export const TimePickerAdmin = ({
           loading={loading || loadingTime}
           backgroundColor={arrayTimes ? admin.brightGray : admin.brightGrayDisabled}
         />
-        <p className={style["text"]}>{"עד שעה"}</p>
+        <p className={style["text"]}>{"End"}</p>
         <DropList
           id={COMPONENT_IDS.ADMIN.DROPDOWNS.ORDER_END_TIME}
           shape={"square"}

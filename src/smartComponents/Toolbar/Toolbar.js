@@ -125,11 +125,11 @@ export const Toolbar = ({
             </div>
           </div>
         )}
-        {complexes && (
+        {/* {complexes && (
           <div className={styles["manager-settings"]}>
             <DrawerManagerSettings complexId={complexes[currentComplex]?.id} />
           </div>
-        )}
+        )} */}
 
         <Button
           {...design}
@@ -183,7 +183,7 @@ export const Toolbar = ({
             endAdornment={
               filterBySearch ? (
                 <Button {...designButton} onClick={clearSearch} backgroundColor={admin.blue}>
-                  נקה
+                  Clear
                 </Button>
               ) : (
                 <Button
@@ -192,7 +192,7 @@ export const Toolbar = ({
                   disabled={searchValue === ""}
                   backgroundColor={searchValue === "" ? admin.disabled : admin.blue}
                 >
-                  הצגה
+                  Search
                 </Button>
               )
             }
@@ -207,7 +207,7 @@ export const Toolbar = ({
               stations
                 ? [
                     ...stations,
-                    { id: stations.length + 1, name: "כל העמדות" },
+                    { id: stations.length + 1, name: "All Stations" },
                     { id: stations.length + 2, name: "", showOption: false }
                   ]
                 : []

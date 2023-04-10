@@ -1,6 +1,6 @@
 .logo{
     font-size: 50px;
-    margin-left: 24px;
+    margin-right: 24px;
     justify-items: center;
     align-items: center;
     display: flex;
@@ -36,16 +36,15 @@
 }
 .manager-settings{
     gap: 15px;
-    // flex-wrap: wrap;
     align-items: center;
     display: inline-flex;
-    margin-right: 10px;
     margin-left: 10px;
+    margin-right: 10px;
 }
 .date-navigator {
     gap: 30px;
     display: flex;
-    margin-right: 50px;
+    margin-left: 50px;
     align-items: center;
 }
 .search{
@@ -53,10 +52,10 @@
     flex-wrap: wrap;
     align-items: center;
     display: inline-flex;
-    margin-right: 50px;
     margin-left: 50px;
+    margin-right: 50px;
 }
 
 .drop-list {
-    margin-right: auto;
+    margin-left: auto;
 }

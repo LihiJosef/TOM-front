@@ -85,20 +85,16 @@ export const Dialog = ({
       </DialogContent>
       <DialogActions classes={{ root: messages?.cancel ? styles["buttons"] : styles["button-only"] }}>
         <div className={styles["button"]}>
-          {messages?.cancel && (
-            <Button {...propsButtonCancel} onClick={onCancel} disabled={loading}>
-              {messages.cancel}
+          {onOk && (
+            <Button {...propsButtonOk} onClick={onOk} disabled={loading || disabledButtonOk}>
+              {loading ? <CircularProgress size={15} style={{ color: colorLoader }} /> : messages?.ok || "Ok"}
             </Button>
           )}
         </div>
         <div className={styles["button"]}>
-          {onOk && (
-            <Button {...propsButtonOk} onClick={onOk} disabled={loading || disabledButtonOk}>
-              {loading ? (
-                <CircularProgress size={15} style={{ color: colorLoader }} />
-              ) : (
-                messages?.ok || "הבנתי"
-              )}
+          {messages?.cancel && (
+            <Button {...propsButtonCancel} onClick={onCancel} disabled={loading}>
+              {messages.cancel}
             </Button>
           )}
         </div>

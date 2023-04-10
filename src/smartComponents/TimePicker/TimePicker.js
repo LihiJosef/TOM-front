@@ -19,22 +19,18 @@ const getUserMsg = ({ isMaxExceeded, maxNum, endHour }) => {
     return {
       title: (
         <span className={styles["time-messages"]}>
-          {/* לא ניתן לבצע יותר מ-{maxNum} הזמנות ביום. אפשר להזמין עמדה ליום אחר או לבטל את אחת ההזמנות של יום זה */}
           You can not order more than {maxNum} orders in the same day. You can order for other day or cancel
           other order from this day
         </span>
       )
     };
   } else if (isTimeComparedSmallCurrentTime(endHour)) {
-    // return { title: <span>עבר זמן פעילות</span>, img: <PositionsAreOccupiedImg /> };
     return {
       title: <span className={styles["time-messages"]}>Time Passed</span>,
       img: <PositionsAreOccupiedImg />
     };
   } else {
-    // else
     return {
-      // title: <span>לא נמצאה שעה פנויה לביצוע הזמנה בתאריך זה</span>,
       title: (
         <span className={styles["time-messages"]}>
           No available time was found to make an order on this date
