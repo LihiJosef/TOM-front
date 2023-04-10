@@ -1,58 +1,27 @@
-export const weekdaysShort = [
-  "א׳",
-  "ב׳",
-  "ג׳",
-  "ד׳",
-  "ה׳",
-  "ו׳",
-  "ש׳"
-];
+export const weekdaysShort = ["U", "M", "T", "W", "R", "F", "S"];
 
-export const weekdays = [
-  "ראשון",
-  "שני",
-  "שלישי",
-  "רביעי",
-  "חמישי",
-  "שישי", 
-  "שבת"
-];
-
-export const monthsShort = [
-  "ינו׳",
-  "פבר׳",
-  "מרץ",
-  "אפר׳",
-  "מאי",
-  "יוני",
-  "יולי",
-  "אוג׳",
-  "ספט׳",
-  "אוק׳",
-  "נוב׳",
-  "דצמ׳"
-];
+export const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 export const months = [
-  "ינואר",
-  "פברואר",
-  "מרץ",
-  "אפריל",
-  "מאי",
-  "יוני",
-  "יולי",
-  "אוגוסט",
-  "ספטמבר",
-  "אוקטובר",
-  "נובמבר",
-  "דצמבר"
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
 ];
 
 export const dateFormat = {
   TIME: "HH:mm",
-  DATE: "DD/MM/YYYY", 
-  DATE_DOTS: "DD.MM.YYYY", 
-  DATE_DOTS_NO_YEAR: "DD.MM", 
+  DATE: "DD/MM/YYYY",
+  DATE_DOTS: "DD.MM.YYYY",
+  DATE_DOTS_NO_YEAR: "DD.MM",
   MONTHS_YEAR: "YYYY-MM",
   DATE_INPUT: "YYYY-MM-DD",
   FULL_DATE: "DD/MM/YYYY, HH:mm"

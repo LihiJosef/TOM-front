@@ -125,17 +125,17 @@ export const Toolbar = ({
             </div>
           </div>
         )}
-        {complexes && (
+        {/* {complexes && (
           <div className={styles["manager-settings"]}>
             <DrawerManagerSettings complexId={complexes[currentComplex]?.id} />
           </div>
-        )}
+        )} */}
 
         <Button
           {...design}
           onClick={() => setDate(getDateActiveIncrement(Object.keys(weekdaysActivityTime), new Date()))}
         >
-          {"היום"}
+          {"Today"}
         </Button>
         <div className={styles["date-navigator"]}>
           <Button
@@ -172,7 +172,7 @@ export const Toolbar = ({
             <ArrowRight />
           </Button>
         </div>
-        <div className={styles["search"]}>
+        {/* <div className={styles["search"]}>
           <Input
             {...designInput}
             value={searchValue}
@@ -183,7 +183,7 @@ export const Toolbar = ({
             endAdornment={
               filterBySearch ? (
                 <Button {...designButton} onClick={clearSearch} backgroundColor={admin.blue}>
-                  נקה
+                  Clear
                 </Button>
               ) : (
                 <Button
@@ -192,13 +192,13 @@ export const Toolbar = ({
                   disabled={searchValue === ""}
                   backgroundColor={searchValue === "" ? admin.disabled : admin.blue}
                 >
-                  הצגה
+                  Search
                 </Button>
               )
             }
           />
-        </div>
-        <div className={styles["drop-list"]}>
+        </div> */}
+        {/* <div className={styles["drop-list"]}>
           <DropList
             {...design}
             width={200}
@@ -207,7 +207,7 @@ export const Toolbar = ({
               stations
                 ? [
                     ...stations,
-                    { id: stations.length + 1, name: "כל העמדות" },
+                    { id: stations.length + 1, name: "All Stations" },
                     { id: stations.length + 2, name: "", showOption: false }
                   ]
                 : []
@@ -220,7 +220,7 @@ export const Toolbar = ({
               setSearchValue("");
             }}
           />
-        </div>
+        </div> */}
         <InfoUser />
       </div>
       {loading && <LinearProgress />}

@@ -61,14 +61,14 @@ export const InfoUser = () => {
               <ListItemIcon>
                 <AccountBox />
               </ListItemIcon>
-              <ListItemText primary="הזמנות שלי" />
+              <ListItemText primary="My Orders" />
             </ListItem>
-            <ListItem button onClick={logout}>
+            {/* <ListItem button onClick={logout}>
               <ListItemIcon>
                 <ExitToApp />
               </ListItemIcon>
-              <ListItemText primary="יציאה" />
-            </ListItem>
+              <ListItemText primary="Logout" />
+            </ListItem> */}
           </List>
         </div>
       )}

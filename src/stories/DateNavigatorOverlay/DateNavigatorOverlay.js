@@ -2,7 +2,6 @@ import { useState } from "react";
 import { string, func, oneOfType, instanceOf, oneOf } from "prop-types";
 
 // Utilities
-import heLocale from "date-fns/locale/he";
 import DateFnsUtils from "@date-io/date-fns";
 
 // Design component
@@ -14,6 +13,8 @@ import { blue } from "@material-ui/core/colors";
 import { ThemeProvider } from "@material-ui/styles";
 import { createTheme, Popover } from "@material-ui/core";
 import { Calendar, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { getDateWithFormat } from "@Utilities/date";
+import { dateFormat } from "@Constants/date";
 
 const defaultMaterialTheme = createTheme({
   palette: {
@@ -22,7 +23,7 @@ const defaultMaterialTheme = createTheme({
   "& .MuiPickersCalendar-week-516": {
     display: "none"
   },
-  direction: "rtl"
+  direction: "ltr"
 });
 
 const typeComponentDisplayObj = {
@@ -61,7 +62,8 @@ export const DateNavigatorOverlay = ({
     <div>
       <TypeComponentDisplay {...PropsComponent} onClick={e => setAnchorEl(e.currentTarget)}>
         {label ||
-          (date && Intl.DateTimeFormat(navigator.language, { dateStyle: "long" }).format(new Date(date)))}
+          // (date && Intl.DateTimeFormat(navigator.language, { dateStyle: "long" }).format(new Date(date)))}
+          (date && getDateWithFormat(date, dateFormat.DATE_DOTS))}
       </TypeComponentDisplay>
       <Popover
         open={isOpen}
@@ -77,7 +79,7 @@ export const DateNavigatorOverlay = ({
         onClose={() => setAnchorEl(null)}
       >
         <ThemeProvider theme={defaultMaterialTheme}>
-          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={heLocale}>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Calendar
               {...PropsCalendar}
               date={date || new Date()}

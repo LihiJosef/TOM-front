@@ -221,7 +221,7 @@ export const DrawerInfoStation = ({
           </div>
         </div>
         <div className={style["line"]}>
-          <h3>{`עמדה ${idStation}`}</h3>
+          <h3>{`Station ${idStation}`}</h3>
           <h4>{typStation}</h4>
           <FormControlLabel
             control={

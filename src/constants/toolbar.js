@@ -22,8 +22,8 @@ export const designInput = {
   shape: "square",
   margin: "dense",
   outlined: true,
-  placeholder: "מזהה עמדה",
-  marginInput: "4px 15px 4px 0",
+  placeholder: "Station Id",
+  marginInput: "4px 0px 4px 15px",
   backgroundColor: transparent,
   style: { width: 200, height: 40, margin: 0 }
 };

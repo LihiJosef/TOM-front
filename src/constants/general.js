@@ -13,7 +13,7 @@ export const typesMobile = [
 ];
 
 export const propsDesignDialogError = {
-  messages: { ok: "לדף הראשי" },
+  messages: { ok: "Main Page" },
   propsButtonOk: {
     color: "#fff",
     fullWidth: true,
@@ -22,11 +22,11 @@ export const propsDesignDialogError = {
   }
 };
 export const days = [
-  { id: 0, day: "ראשון" },
-  { id: 1, day: "שני" },
-  { id: 2, day: "שלישי" },
-  { id: 3, day: "רביעי" },
-  { id: 4, day: "חמישי" },
-  { id: 5, day: "שישי" },
-  { id: 6, day: "שבת" }
+  { id: 0, day: "Sunday" },
+  { id: 1, day: "Monday" },
+  { id: 2, day: "Tuesday" },
+  { id: 3, day: "Wednesday" },
+  { id: 4, day: "Thursday" },
+  { id: 5, day: "Friday" },
+  { id: 6, day: "Saturday" }
 ];

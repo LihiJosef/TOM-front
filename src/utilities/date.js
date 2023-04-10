@@ -3,8 +3,6 @@ import { dateFormat } from "../constants/date";
 
 const NEW_HOUR = 60;
 
-moment.locale("he");
-
 export const getFullDate = date => moment(date).format("YYYY-MM-DD");
 
 export const getHourSpan = appointment => {
