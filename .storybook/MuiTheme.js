@@ -1,4 +1,3 @@
-import rtl from "jss-rtl";
 import { create } from "jss";
 import { heIL } from "@material-ui/core/locale";
 import { StylesProvider, jssPreset, createTheme, ThemeProvider } from "@material-ui/core/styles";
@@ -10,10 +9,10 @@ document.head.insertBefore(styleNode, document.head.firstChild);
 document.getElementById("docs-root").dir = "ltr";
 
 // Configure JSS
-const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
+const jss = create({ plugins: [...jssPreset().plugins] });
 const theme = createTheme(
   {
-    direction: "rtl",
+    direction: "ltr",
     palette: {
       primary: {
         main: backgroundColor.darkGreen,

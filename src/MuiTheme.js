@@ -1,4 +1,3 @@
-import rtl from "jss-rtl";
 import { create } from "jss";
 import { heIL } from "@material-ui/core/locale";
 import { backgroundColor, text, transparent } from "./styles/colors";
@@ -7,10 +6,10 @@ import { StylesProvider, jssPreset, createTheme, ThemeProvider } from "@material
 const styleNode = document.createComment("jss-insertion-point");
 document.head.insertBefore(styleNode, document.head.firstChild);
 
-const jss = create({ plugins: [...jssPreset().plugins, rtl()], insertionPoint: "jss-insertion-point" });
+const jss = create({ plugins: [...jssPreset().plugins], insertionPoint: "jss-insertion-point" });
 const theme = createTheme(
   {
-    direction: "rtl",
+    direction: "ltr",
     palette: {
       primary: {
         main: backgroundColor.darkGreen,

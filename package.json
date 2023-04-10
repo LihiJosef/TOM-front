@@ -25,7 +25,6 @@
     "history": "^4.10.1",
     "http-status-codes": "^2.2.0",
     "jss": "^10.5.0",
-    "jss-rtl": "^0.3.0",
     "lodash.isequal": "^4.5.0",
     "materialui-daterange-picker": "^1.1.92",
     "moment": "^2.29.1",

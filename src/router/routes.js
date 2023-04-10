@@ -18,11 +18,11 @@ export const routes = [
     component: <CreatedAppointment />,
     exact: true,
     protected: false
+  },
+  {
+    path: "/admin",
+    component: <AppointmentManagement />,
+    exact: true,
+    protected: true
   }
-  // {
-  //   path: "/admin",
-  //   component: <AppointmentManagement />,
-  //   exact: true,
-  //   protected: true
-  // },
 ];

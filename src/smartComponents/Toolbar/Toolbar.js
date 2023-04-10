@@ -149,7 +149,7 @@ export const Toolbar = ({
               )
             }
           >
-            <ArrowRight />
+            <ArrowLeft />
           </Button>
           <DateNavigatorOverlay
             date={date}
@@ -169,7 +169,7 @@ export const Toolbar = ({
               )
             }
           >
-            <ArrowLeft />
+            <ArrowRight />
           </Button>
         </div>
         <div className={styles["search"]}>
