@@ -63,13 +63,12 @@ export const InfoUser = () => {
               </ListItemIcon>
               <ListItemText primary="My Orders" />
             </ListItem>
-            <ListItem button>
-              {/* <ListItem button onClick={logout}> */}
+            {/* <ListItem button onClick={logout}>
               <ListItemIcon>
                 <ExitToApp />
               </ListItemIcon>
               <ListItemText primary="Logout" />
-            </ListItem>
+            </ListItem> */}
           </List>
         </div>
       )}

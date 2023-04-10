@@ -172,7 +172,7 @@ export const Toolbar = ({
             <ArrowRight />
           </Button>
         </div>
-        <div className={styles["search"]}>
+        {/* <div className={styles["search"]}>
           <Input
             {...designInput}
             value={searchValue}
@@ -197,8 +197,8 @@ export const Toolbar = ({
               )
             }
           />
-        </div>
-        <div className={styles["drop-list"]}>
+        </div> */}
+        {/* <div className={styles["drop-list"]}>
           <DropList
             {...design}
             width={200}
@@ -220,7 +220,7 @@ export const Toolbar = ({
               setSearchValue("");
             }}
           />
-        </div>
+        </div> */}
         <InfoUser />
       </div>
       {loading && <LinearProgress />}
