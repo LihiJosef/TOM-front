@@ -8,7 +8,7 @@ import { Button } from "../../stories/Button/Button";
 import { backgroundColor } from "../../styles/colors";
 import { COMPONENT_IDS } from "../../constants/componentIds";
 import { propsDesignDialog } from "../../constants/appointments";
-import { weekdaysShort, dateFormat } from "../../constants/date";
+import { weekdaysShort, dateFormat, weekdays } from "../../constants/date";
 import { useAsyncThrowError } from "../../hooks/useAsyncThrowError";
 import { getDateWithFormat, getHourSpan } from "../../utilities/date";
 import { cancelAppointmentUser } from "../../services/appointmentService";
@@ -51,7 +51,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
     if (appointment["Station.name"]) {
       return ` - ${appointment["Station.name"]}`;
     } else {
-      return `מספר ${appointment?.station_id}`;
+      return `#${appointment?.station_id}`;
     }
   };
 
@@ -90,7 +90,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
           {appointment["Station.StationType.name"]} {getCardTitle(appointment)}
         </div>
         <div>
-          מתחם {appointment["Station.Complex.name"]} <br />
+          Complex {appointment["Station.Complex.name"]} <br />
         </div>
         {/* todo : remove comment*/}
         {/* {user.id !== appointment["user_info"].id && (
@@ -98,7 +98,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
             עבור {appointment["user_info"].fullName} <br />
           </div>
         )} */}
-        יום {weekdaysShort[new Date(appointment["start_datetime"]).getDay()]} {getDate(appointment)}
+        {weekdays[new Date(appointment["start_datetime"]).getDay()]}, {getDate(appointment)}
         <br />
         {getHourSpan(appointment)}
       </>

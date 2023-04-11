@@ -62,7 +62,7 @@ export default function MyAppointments() {
   return (
     <div className={classes.myAppointments}>
       <Typography classes={{ root: clsx(classes.title, classes.myAppointmentsTitle) }}>
-        ההזמנות שלי
+        My Appointments
       </Typography>
 
       {loading || appointments?.length > 0 ? (
@@ -104,10 +104,10 @@ export default function MyAppointments() {
       ) : (
         <div className={classes.noAppointments}>
           <NoAppointmentsImg />
-          <p>אין לך הזמנות כרגע, רוצה להזמין עמדה?</p>
+          <p>You have no booked appointments. Would you like to book one?</p>
           <br />
           <Button onClick={onClick} backgroundColor={backgroundColor.darkGreen} size={"large"}>
-            הזמנת עמדה
+            New appointment
           </Button>
         </div>
       )}
