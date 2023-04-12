@@ -127,7 +127,6 @@ export const Calendar = () => {
 
   const getStationDisables = async () => {
     try {
-      console.log("all params:", date, complexes[currentComplex]?.id);
       const { data } = await getDisableStationsTimes({ date, complexId: complexes[currentComplex]?.id });
 
       setDisableStationsTimesState(data);
