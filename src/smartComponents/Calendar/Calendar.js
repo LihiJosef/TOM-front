@@ -156,8 +156,6 @@ export const Calendar = () => {
   };
 
   const getDataAppointmentTitle = appointment => {
-    console.log(appointment.userInfo);
-
     if (appointment.userId === appointment["userInfo"].id) {
       return `${appointment.userInfo.fullName}`;
     } else {
