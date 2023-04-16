@@ -189,13 +189,13 @@ export const DrawerInfoStation = ({
         backgroundColor={"rgba(0, 0, 0, 0)"}
       >
         <>
-          <Typography>{`עמדה ${idStation}`}</Typography>
+          <Typography>{`Station ${idStation}`}</Typography>
           <Typography>
             {typStation}
             {nameStation && ` - ${nameStation}`}
           </Typography>
           {!isStationActive ? (
-            <Typography className={style["text-inactive"]}>{"עמדה לא פעילה"}</Typography>
+            <Typography className={style["text-inactive"]}>{"Inactive Station"}</Typography>
           ) : (
             <Typography className={style["transparent-text"]}></Typography>
           )}
@@ -216,7 +216,7 @@ export const DrawerInfoStation = ({
               backgroundColor={disabled ? buttonStyle.lightBackground : admin.blue}
               className={classes.button}
             >
-              {"שמור וסגור"}
+              {"Save and close"}
             </Button>
           </div>
         </div>
@@ -232,17 +232,17 @@ export const DrawerInfoStation = ({
                 onChange={({ target }) => handleSwitchChange(target)}
               />
             }
-            label={isStationActive ? "עמדה פעילה" : "עמדה לא פעילה"}
+            label={isStationActive ? "active station" : "inactive station"}
             className={classes.switch}
           />
           <div className={classes.dates}>
             {isStationActive && (
               <div>
-                <Typography>השבתה לתאריכים מסוימים</Typography>
+                <Typography>Inactivate for certain dates</Typography>
                 <div className={classes.dates}>
                   <TextField
                     id={COMPONENT_IDS.ADMIN.DROPDOWNS.PARTIAL_DEACTIVATION_START_DATE}
-                    label="התחלת ההשבתה"
+                    label="Start of inactivate"
                     type="datetime-local"
                     className={classes.textField}
                     value={disableStartDate}
@@ -256,7 +256,7 @@ export const DrawerInfoStation = ({
                   />
                   <TextField
                     id={COMPONENT_IDS.ADMIN.DROPDOWNS.PARTIAL_DEACTIVATION_END_DATE}
-                    label="סוף ההשבתה"
+                    label="End of inactivate"
                     type="datetime-local"
                     className={classes.textField}
                     value={disableEndDate}
@@ -300,7 +300,7 @@ export const DrawerInfoStation = ({
                     <TextField
                       autoFocus
                       key={index}
-                      label="כותרת"
+                      label="title"
                       value={data.title}
                       onChange={({ target }) =>
                         isStationActive
@@ -320,10 +320,10 @@ export const DrawerInfoStation = ({
                   </div>
                   {isStationActive ? (
                     <Typography>
-                      המתחם הושבת לתאריכים {data.start_date} - {data.end_date}
+                      The station was disabled for the dates {data.start_date} - {data.end_date}
                     </Typography>
                   ) : (
-                    <Typography>המתחם יושבת מתאריך {data.start_date}</Typography>
+                    <Typography>The station is inactive from date {data.start_date}</Typography>
                   )}
                 </div>
               );
@@ -341,9 +341,9 @@ export const DrawerInfoStation = ({
         {...messagesDialogCancelStation}
       >
         <Typography>
-          {`הקפאת העמדה תחליף את ההזמנות הקיימות בעמדות חלופיות.`}
+          {`Inactivate a station will replace the existing orders with alternative stations.`}
           <br />
-          {`במידה ולא ימצאו עמדות פנויות, ההזמנות יבוטלו ונעדכן את המשתמש באסמס`}
+          {`If no available stations are found, the orders will be canceled and we will update the user via SMS`}
         </Typography>
         <br />
         <br />
