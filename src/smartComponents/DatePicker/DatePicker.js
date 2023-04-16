@@ -22,7 +22,7 @@ export const DatePicker = ({ minDate, maxDate, objWeekdaysActive, onChange }) =>
   const [date, setDate] = useState(null);
   const [indexClicked, setIndexClicked] = useState(null);
   const [isDisplayButtonToDay, setIsDisplayButtonToDay] = useState(true);
-  const [labelButtonToday, setLabelButtonToday] = useState("לעבור להיום");
+  const [labelButtonToday, setLabelButtonToday] = useState("Move To Today");
 
   useEffect(() => {
     if (minDate && moment(minDate).isAfter(moment())) {

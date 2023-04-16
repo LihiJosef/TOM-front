@@ -184,8 +184,8 @@ export const DrawerInfoStation = ({
         id={COMPONENT_IDS.ADMIN.BUTTONS.OPEN_STATION_DRAWER}
         shape="square"
         fullWidth={true}
-        style={{ minHeight: 110 }}
-        onClick={() => setOpen(true)}
+        style={{ minHeight: 110, cursor: "default" }}
+        // onClick={() => setOpen(true)}
         backgroundColor={"rgba(0, 0, 0, 0)"}
       >
         <>
@@ -202,23 +202,24 @@ export const DrawerInfoStation = ({
         </>
       </Button>
       <Drawer open={open} onClose={() => setOpen(false)} classes={{ paper: style.paper }}>
-        <div className={style["line"]}>
-          <IconButton id={COMPONENT_IDS.ADMIN.BUTTONS.CLOSE_STATION_DRAWER} onClick={() => setOpen(false)}>
-            <Close />
-          </IconButton>
+        <div className={style["button-line"]}>
+
           <div className={style["button-save"]}>
             <Button
               id={COMPONENT_IDS.ADMIN.BUTTONS.SAVE_AND_EXIT_STATION_DRAWER}
               shape="square"
-              color={buttonStyle.light}
+              // color={buttonStyle.light}
               onClick={save}
               disabled={disabled}
               backgroundColor={disabled ? buttonStyle.lightBackground : admin.blue}
-              className={classes.button}
+              // className={classes.button}
             >
               {"Save and close"}
             </Button>
           </div>
+          <IconButton id={COMPONENT_IDS.ADMIN.BUTTONS.CLOSE_STATION_DRAWER} onClick={() => setOpen(false)}>
+            <Close />
+          </IconButton>
         </div>
         <div className={style["line"]}>
           <h3>{`Station ${idStation}`}</h3>

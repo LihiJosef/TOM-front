@@ -10,6 +10,12 @@
 .line {
     font-family: 'Heebo Bold', 'Heebo Regular', 'Heebo', sans-serif;
 }
+.button-line {
+    font-family: 'Heebo Bold', 'Heebo Regular', 'Heebo', sans-serif;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
 .line-dates {    
     width: 100%;
     display: flex;
