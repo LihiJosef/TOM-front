@@ -24,7 +24,7 @@ it("renders without crashing", () => {
     render(<DatePicker onChange={() => {}}/>, container);
   });
   expect(container.textContent).toContain("1");
-  expect(container.textContent).toContain("לעבור להיום");
+  expect(container.textContent).toContain("Move To Today");
   expect(container.querySelector("[id='button']")).toBeTruthy();
   expect(container.querySelector("[id='button-0']")).toBeTruthy();
   expect(container.querySelector("[id='button-icon-left']")).toBeTruthy();
@@ -59,7 +59,7 @@ it("Checking if minDate is the current date", () => {
     render(<DatePicker onChange={() => {}} minDate={new Date()} />, container);
   });
   // Testing is displayed button today
-  expect(container.textContent).toContain("לעבור להיום");
+  expect(container.textContent).toContain("Move To Today");
   expect(container.querySelector("[id='button']")).toBeTruthy();
   // Testing is button icon right disabled and left now
   expect(container.querySelector("[id='button-icon-right']")).toBeDisabled();
