@@ -62,7 +62,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
           <div className={styles["grid-item"]}>{cardContent(appointment)}</div>
           <div className={classNames(styles["grid-item"], styles["vl"], styles["centered"])} />
           <div className={classNames(styles["grid-item"], styles["centered"])}>
-            המועד לא מתאים?
+            Cant attend?
             <br />
             <Button
               id={COMPONENT_IDS.CUSTOMER.BUTTONS.CANCEL_ORDER}
@@ -72,7 +72,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
               outline={false}
               color={backgroundColor.darkGreen}
             >
-              ביטול הזמנה
+              Cancel appointment
             </Button>
           </div>
         </div>
@@ -109,32 +109,32 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
       <div className={styles["appointments-container"]}>
         {loading
           ? [...Array(8).keys()].map(i => (
-              <Card key={i} outline={true} margin={"15px 0px"} padding={"10px 15px"} minHeight={77}>
-                <div className={styles["grid-container"]}>
-                  <div className={styles["grid-item"]}>
-                    <div className={styles["card-skeleton"]} style={{ width: "125px" }} />
-                    <div className={styles["card-skeleton"]} style={{ width: "120px" }} />
-                    <div className={styles["card-skeleton"]} style={{ width: "90px" }} />
-                  </div>
+            <Card key={i} outline={true} margin={"15px 0px"} padding={"10px 15px"} minHeight={77}>
+              <div className={styles["grid-container"]}>
+                <div className={styles["grid-item"]}>
+                  <div className={styles["card-skeleton"]} style={{ width: "125px" }} />
+                  <div className={styles["card-skeleton"]} style={{ width: "120px" }} />
+                  <div className={styles["card-skeleton"]} style={{ width: "90px" }} />
                 </div>
-              </Card>
-            ))
+              </div>
+            </Card>
+          ))
           : appointments.map(appointment => (
-              <Card key={appointment.id} outline={true} margin={"15px 0px"} padding={"10px 15px"}>
-                {card(appointment)}
-              </Card>
-            ))}
+            <Card key={appointment.id} outline={true} margin={"15px 0px"} padding={"10px 15px"}>
+              {card(appointment)}
+            </Card>
+          ))}
       </div>
       {selectedAppointment && (
         <Dialog
           open={open}
           onOk={handleCancelAppointment}
           onCancel={handleCancelDialog}
-          title={"לבטל את ההזמנה?"}
+          title={"Cancel appointment?"}
           {...propsDesignDialog}
         >
-          ביטול ההזמנה לתאריך {getDate(selectedAppointment)} בין השעות {getHourSpan(selectedAppointment)}{" "}
-          תאפשר לאנשים אחרים לשמור את העמדה במקומך
+          Canceling appointment on {getDate(selectedAppointment)} at {getHourSpan(selectedAppointment)}{" "}
+          will allow others to scheadule this appointment instead
         </Dialog>
       )}
     </>
