@@ -69,7 +69,7 @@ export const NavigationPad = ({
         <button
           type="button"
           id="button-icon-right"
-          onClick={() => handleClick("left")}
+          onClick={() => handleClick("right")}
           className={style["button-icons-arrow"]}
           disabled={minDate ? isAfterMinDate() : false}
         >

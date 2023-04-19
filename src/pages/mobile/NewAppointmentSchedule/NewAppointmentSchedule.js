@@ -72,7 +72,7 @@ export default forwardRef(function NewAppointmentSchedule(
       isDisabled: !isTimeSelected(timeSelectionMap),
       loading: loadingNext,
       textLabelLoading: "Saving Station For You...",
-      textLabel: isTimeSelected(timeSelectionMap) ? "Determine?" : "Please Choose Hour"
+      textLabel: isTimeSelected(timeSelectionMap) ? "Schedule?" : "Please Choose Hour"
     });
   }, [timeSelectionMap, loadingNext]);
 
