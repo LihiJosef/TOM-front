@@ -1,4 +1,4 @@
-export const weekdaysShort = ["U", "M", "T", "W", "R", "F", "S"];
+export const weekdaysShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
