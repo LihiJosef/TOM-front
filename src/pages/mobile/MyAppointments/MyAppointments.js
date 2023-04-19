@@ -66,14 +66,24 @@ export default function MyAppointments() {
       </Typography>
 
       {loading || appointments?.length > 0 ? (
-        <div>
+        <div className={classes.appointmentsData}>
+          {
+            <Appointments
+              loading={loading}
+              // appointments={appointments}
+              appointments={appointments.filter(item => isFutureDate(item.start_datetime))}
+              setAppointments={setAppointments}
+              canBeCanceled={true}
+            />
+          }
+
           <div className={classes.prevOrders}>
             <Typography classes={{ root: clsx(classes.title, classes.myAppointmentsTitle) }}>
-              Future appointments
+            Past Appointments
             </Typography>
 
             <Typography onClick={toggleShowAll} classes={{ root: classes.showAll }}>
-              Show all
+              Show All
             </Typography>
           </div>
           {pastAppointments.length > 0 && (
