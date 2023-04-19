@@ -56,8 +56,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
   };
 
   const card = appointment => {
-    // TODO : REMOVE IF 1>2
-    if (canBeCanceled && 1 > 2) {
+    if (canBeCanceled) {
       return (
         <div className={styles["grid-container"]}>
           <div className={styles["grid-item"]}>{cardContent(appointment)}</div>
