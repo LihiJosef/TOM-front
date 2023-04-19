@@ -10,6 +10,11 @@ const useStyles = makeStyles(({ palette }) => ({
     paddingRight: "13px",
     backgroundColor: "white"
   },
+
+  appointmentsData: {
+    paddingBottom: "8%"
+  },
+
   title: {
     margin: "calc(max(1.5vh, 6px)) 0 0 0"
   },
@@ -22,7 +27,8 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   prevOrders: {
-    display: "flex"
+    display: "flex",
+    alignItems: "center"
   },
 
   showAll: {
