@@ -8,7 +8,7 @@ import { Button } from "../../stories/Button/Button";
 import { backgroundColor } from "../../styles/colors";
 import { COMPONENT_IDS } from "../../constants/componentIds";
 import { propsDesignDialog } from "../../constants/appointments";
-import { weekdaysShort, dateFormat, weekdays } from "../../constants/date";
+import { dateFormat, weekdays } from "../../constants/date";
 import { useAsyncThrowError } from "../../hooks/useAsyncThrowError";
 import { getDateWithFormat, getHourSpan } from "../../utilities/date";
 import { cancelAppointmentUser } from "../../services/appointmentService";
@@ -109,21 +109,21 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
       <div className={styles["appointments-container"]}>
         {loading
           ? [...Array(8).keys()].map(i => (
-            <Card key={i} outline={true} margin={"15px 0px"} padding={"10px 15px"} minHeight={77}>
-              <div className={styles["grid-container"]}>
-                <div className={styles["grid-item"]}>
-                  <div className={styles["card-skeleton"]} style={{ width: "125px" }} />
-                  <div className={styles["card-skeleton"]} style={{ width: "120px" }} />
-                  <div className={styles["card-skeleton"]} style={{ width: "90px" }} />
+              <Card key={i} outline={true} margin={"15px 0px"} padding={"10px 15px"} minHeight={77}>
+                <div className={styles["grid-container"]}>
+                  <div className={styles["grid-item"]}>
+                    <div className={styles["card-skeleton"]} style={{ width: "125px" }} />
+                    <div className={styles["card-skeleton"]} style={{ width: "120px" }} />
+                    <div className={styles["card-skeleton"]} style={{ width: "90px" }} />
+                  </div>
                 </div>
-              </div>
-            </Card>
-          ))
+              </Card>
+            ))
           : appointments.map(appointment => (
-            <Card key={appointment.id} outline={true} margin={"15px 0px"} padding={"10px 15px"}>
-              {card(appointment)}
-            </Card>
-          ))}
+              <Card key={appointment.id} outline={true} margin={"15px 0px"} padding={"10px 15px"}>
+                {card(appointment)}
+              </Card>
+            ))}
       </div>
       {selectedAppointment && (
         <Dialog
@@ -133,8 +133,8 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
           title={"Cancel appointment?"}
           {...propsDesignDialog}
         >
-          Canceling appointment on {getDate(selectedAppointment)} at {getHourSpan(selectedAppointment)}{" "}
-          will allow others to scheadule this appointment instead
+          Canceling appointment on {getDate(selectedAppointment)} at {getHourSpan(selectedAppointment)} will
+          allow others to scheadule this appointment instead
         </Dialog>
       )}
     </>
