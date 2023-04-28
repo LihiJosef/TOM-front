@@ -2,12 +2,12 @@ import { useState, useRef } from "react";
 
 import { ExitToApp, AccountBox } from "@material-ui/icons";
 import {
-  Avatar,
   List,
-  ListItemIcon,
+  Avatar,
+  Divider,
   ListItem,
   ListItemText,
-  Divider,
+  ListItemIcon,
   ListItemAvatar
 } from "@material-ui/core";
 

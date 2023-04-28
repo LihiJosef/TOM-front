@@ -125,6 +125,7 @@ export const Toolbar = ({
             </div>
           </div>
         )}
+        {/* todo : change language in component */}
         {/* {complexes && (
           <div className={styles["manager-settings"]}>
             <DrawerManagerSettings complexId={complexes[currentComplex]?.id} />
@@ -172,6 +173,31 @@ export const Toolbar = ({
             <ArrowRight />
           </Button>
         </div>
+
+        <div className={styles["drop-list"]}>
+          <DropList
+            {...design}
+            width={200}
+            value={stationValue ? stationValue : 1}
+            options={
+              stations
+                ? [
+                    ...stations,
+                    { id: stations.length + 1, name: "All Stations" },
+                    { id: stations.length + 2, name: "", showOption: false }
+                  ]
+                : []
+            }
+            onChange={value => {
+              setStationValue(value);
+              setDataStations(
+                dataStationsObjFilter[value] ?? Object.values(dataStationsObjFilter?.default || {})
+              );
+              setSearchValue("");
+            }}
+          />
+        </div>
+
         <div className={styles["search"]}>
           <Input
             {...designInput}
@@ -198,29 +224,7 @@ export const Toolbar = ({
             }
           />
         </div>
-        <div className={styles["drop-list"]}>
-          <DropList
-            {...design}
-            width={200}
-            value={stationValue ? stationValue : 1}
-            options={
-              stations
-                ? [
-                    ...stations,
-                    { id: stations.length + 1, name: "All Stations" },
-                    { id: stations.length + 2, name: "", showOption: false }
-                  ]
-                : []
-            }
-            onChange={value => {
-              setStationValue(value);
-              setDataStations(
-                dataStationsObjFilter[value] ?? Object.values(dataStationsObjFilter?.default || {})
-              );
-              setSearchValue("");
-            }}
-          />
-        </div>
+
         <InfoUser />
       </div>
       {loading && <LinearProgress />}

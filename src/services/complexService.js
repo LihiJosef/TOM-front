@@ -5,7 +5,6 @@ const axiosInstance = createAxiosInstance(process.env.REACT_APP_SERVICE_API, "/a
 export default {
   getComplexData: async complexId => {
     const { data } = await axiosInstance.get(`/getData?complexId=${complexId}`);
-
     return data;
   },
   updateComplexDisables: async (complexId, deletedDisablesIds, addedDisables) => {
