@@ -70,7 +70,6 @@ export default function MyAppointments() {
           {
             <Appointments
               loading={loading}
-              // appointments={appointments}
               appointments={appointments.filter(item => isFutureDate(item.start_datetime))}
               setAppointments={setAppointments}
               canBeCanceled={true}
