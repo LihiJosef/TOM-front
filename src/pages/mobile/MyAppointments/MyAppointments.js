@@ -79,7 +79,7 @@ export default function MyAppointments() {
 
           <div className={classes.prevOrders}>
             <Typography classes={{ root: clsx(classes.title, classes.myAppointmentsTitle) }}>
-            Past Appointments
+              Past Appointments
             </Typography>
 
             <Typography onClick={toggleShowAll} classes={{ root: classes.showAll }}>

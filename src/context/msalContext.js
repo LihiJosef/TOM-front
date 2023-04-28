@@ -76,7 +76,7 @@ export const MsalProvider = ({ children, request, forceLogin = false, handleErro
   };
 
   const logout = () => {
-    // TODO
+    // TODO logout
     publicClient.logoutRedirect();
   };
 
