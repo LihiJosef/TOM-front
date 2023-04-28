@@ -172,7 +172,7 @@ export const Toolbar = ({
             <ArrowRight />
           </Button>
         </div>
-        {/* <div className={styles["search"]}>
+        <div className={styles["search"]}>
           <Input
             {...designInput}
             value={searchValue}
@@ -197,7 +197,7 @@ export const Toolbar = ({
               )
             }
           />
-        </div> */}
+        </div>
         {/* <div className={styles["drop-list"]}>
           <DropList
             {...design}
