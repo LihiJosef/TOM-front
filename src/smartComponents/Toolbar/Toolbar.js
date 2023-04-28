@@ -198,7 +198,7 @@ export const Toolbar = ({
             }
           />
         </div>
-        {/* <div className={styles["drop-list"]}>
+        <div className={styles["drop-list"]}>
           <DropList
             {...design}
             width={200}
@@ -220,7 +220,7 @@ export const Toolbar = ({
               setSearchValue("");
             }}
           />
-        </div> */}
+        </div>
         <InfoUser />
       </div>
       {loading && <LinearProgress />}
