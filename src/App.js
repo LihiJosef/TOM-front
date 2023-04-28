@@ -20,7 +20,8 @@ const App = () => {
           <MuiTheme>
             <AuthenticationProvider>
               <div className={style["app"]}>
-                <PromptPWA />
+                {/* todo : pwa */}
+                {/* <PromptPWA /> */}
                 <RouteManager />
               </div>
             </AuthenticationProvider>
