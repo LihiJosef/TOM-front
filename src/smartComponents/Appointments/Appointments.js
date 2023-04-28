@@ -62,7 +62,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
           <div className={styles["grid-item"]}>{cardContent(appointment)}</div>
           <div className={classNames(styles["grid-item"], styles["vl"], styles["centered"])} />
           <div className={classNames(styles["grid-item"], styles["centered"])}>
-            Cant attend?
+            Can't attend?
             <br />
             <Button
               id={COMPONENT_IDS.CUSTOMER.BUTTONS.CANCEL_ORDER}
