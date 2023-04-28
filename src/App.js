@@ -5,7 +5,7 @@ import style from "./app.module.scss";
 import history from "./router/history";
 import { Router } from "react-router-dom";
 import RouteManager from "./router/RouteManager";
-import { PromptPWA } from "./PWA/PromptPWA/PromptPWA";
+// import { PromptPWA } from "./PWA/PromptPWA/PromptPWA";
 import { QueryClient, QueryClientProvider } from "react-query";
 import TelemetryProvider from "./applicationInsights/TelemetryProvider";
 import AuthenticationProvider from "./authentication/AuthenticationProvider";
