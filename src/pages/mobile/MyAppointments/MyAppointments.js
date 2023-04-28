@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import history from "../../../router/history";
 import useStyles from "./MyAppointments.style";
 import { Typography } from "@material-ui/core";
@@ -8,6 +7,7 @@ import { isFutureDate } from "../../../utilities/date";
 import { Button } from "../../../stories/Button/Button";
 import { backgroundColor } from "../../../styles/colors";
 import { COMPONENT_IDS } from "../../../constants/componentIds";
+import { UserMenu } from "../../../smartComponents/UserMenu/UserMenu";
 import { useAsyncThrowError } from "../../../hooks/useAsyncThrowError";
 import { getUserAppointments } from "../../../services/appointmentService";
 import { Appointments } from "../../../smartComponents/Appointments/Appointments";
@@ -61,9 +61,11 @@ export default function MyAppointments() {
 
   return (
     <div className={classes.myAppointments}>
-      <Typography classes={{ root: clsx(classes.title, classes.myAppointmentsTitle) }}>
-        My Appointments
-      </Typography>
+      <div className={classes.title}>
+        <Typography classes={{ root: classes.myAppointmentsTitle }}>My Appointments</Typography>
+        {/* todo : uncomment */}
+        {/* <UserMenu /> */}
+      </div>
 
       {loading || appointments?.length > 0 ? (
         <div className={classes.appointmentsData}>
@@ -76,14 +78,13 @@ export default function MyAppointments() {
             />
           }
 
-          <div className={classes.prevOrders}>
-            <Typography classes={{ root: clsx(classes.title, classes.myAppointmentsTitle) }}>
-              Past Appointments
-            </Typography>
-
-            <Typography onClick={toggleShowAll} classes={{ root: classes.showAll }}>
-              Show All
-            </Typography>
+          <div className={classes.title}>
+            <Typography classes={{ root: classes.myAppointmentsTitle }}>Past Appointments</Typography>
+            <div>
+              <Typography onClick={toggleShowAll} classes={{ root: classes.showAll }}>
+                Show All
+              </Typography>
+            </div>
           </div>
           {pastAppointments.length > 0 && (
             <Appointments
