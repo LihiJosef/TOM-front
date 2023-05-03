@@ -1,5 +1,5 @@
 import classNames from "clsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "../../stories/Card/Card";
 import styles from "./appointments.module.scss";
 import { useMsal } from "../../context/msalContext";
@@ -16,15 +16,33 @@ import Rating from "@material-ui/lab/Rating";
 
 export const Appointments = ({ loading, appointments, setAppointments, canBeCanceled }) => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(2);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
 
   const { user } = useMsal();
   const { throwError } = useAsyncThrowError("dialog");
 
-  const handleClick = appointment => {
+  useEffect(() => {
+    console.log("appointments");
+    console.log(appointments);
+  }, [appointments]);
+
+  const handleCancelClick = appointment => {
     setOpen(true);
     setSelectedAppointment(appointment);
+  };
+
+  const handleChangeRatingClick = (appointment, newRating) => {
+    console.log("appointment")
+    console.log(appointment)
+    console.log("newRating")
+    console.log(newRating)
+  };
+
+  const updateRatingInDb = (appointmentId, newRating) => {
+    console.log("appointment")
+    console.log(appointment)
+    console.log("newRating")
+    console.log(newRating)
   };
 
   const handleCancelAppointment = async () => {
@@ -69,7 +87,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
             <Button
               id={COMPONENT_IDS.CUSTOMER.BUTTONS.CANCEL_ORDER}
               onClick={() => {
-                handleClick(appointment);
+                handleCancelClick(appointment);
               }}
               outline={false}
               color={backgroundColor.darkGreen}
@@ -88,9 +106,9 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
             How was the station?
             <br />
             <Rating
-              value={value}
+              value={appointment.rating ? appointment.rating : 0}
               onChange={(event, newValue) => {
-                setValue(newValue);
+                handleChangeRatingClick(appointment, newValue)
               }}
             />
           </div>
