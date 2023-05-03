@@ -11,7 +11,7 @@ import { propsDesignDialog } from "../../constants/appointments";
 import { dateFormat, weekdays } from "../../constants/date";
 import { useAsyncThrowError } from "../../hooks/useAsyncThrowError";
 import { getDateWithFormat, getHourSpan } from "../../utilities/date";
-import { cancelAppointmentUser } from "../../services/appointmentService";
+import { cancelAppointmentUser, updateRating } from "../../services/appointmentService";
 import Rating from "@material-ui/lab/Rating";
 
 export const Appointments = ({ loading, appointments, setAppointments, canBeCanceled }) => {
@@ -31,18 +31,24 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
     setSelectedAppointment(appointment);
   };
 
-  const handleChangeRatingClick = (appointment, newRating) => {
-    console.log("appointment")
-    console.log(appointment)
-    console.log("newRating")
-    console.log(newRating)
+  const handleChangeRatingClick = async (appointment, newRating) => {
+    const updatedAppointments = appointments.map(apt => {
+      if (apt.id === appointment.id) {
+        apt.rating = newRating;
+      }
+
+      return apt;
+    });
+    setAppointments(updatedAppointments);
+    await updateRatingInDb(appointment.id, newRating);
   };
 
-  const updateRatingInDb = (appointmentId, newRating) => {
-    console.log("appointment")
-    console.log(appointment)
-    console.log("newRating")
-    console.log(newRating)
+  const updateRatingInDb = async (appointmentId, newRating) => {
+    try {
+      await updateRating(appointmentId, newRating);
+    } catch (error) {
+      throwError(err);
+    }
   };
 
   const handleCancelAppointment = async () => {
@@ -108,7 +114,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
             <Rating
               value={appointment.rating ? appointment.rating : 0}
               onChange={(event, newValue) => {
-                handleChangeRatingClick(appointment, newValue)
+                handleChangeRatingClick(appointment, newValue);
               }}
             />
           </div>
