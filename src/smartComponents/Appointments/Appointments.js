@@ -12,9 +12,11 @@ import { dateFormat, weekdays } from "../../constants/date";
 import { useAsyncThrowError } from "../../hooks/useAsyncThrowError";
 import { getDateWithFormat, getHourSpan } from "../../utilities/date";
 import { cancelAppointmentUser } from "../../services/appointmentService";
+import Rating from "@material-ui/lab/Rating";
 
 export const Appointments = ({ loading, appointments, setAppointments, canBeCanceled }) => {
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(2);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
 
   const { user } = useMsal();
@@ -78,7 +80,22 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
         </div>
       );
     } else {
-      return cardContent(appointment);
+      return (
+        <div className={styles["grid-container"]}>
+          <div className={styles["grid-item"]}>{cardContent(appointment)}</div>
+          <div className={classNames(styles["grid-item"], styles["vl"], styles["centered"])} />
+          <div className={classNames(styles["grid-item"], styles["centered"])}>
+            How was the station?
+            <br />
+            <Rating
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+            />
+          </div>
+        </div>
+      );
     }
   };
 
