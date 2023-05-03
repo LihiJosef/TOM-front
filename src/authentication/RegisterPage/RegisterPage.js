@@ -2,8 +2,6 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -11,8 +9,10 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { RegisterImage } from "./RegisterImage";
-// import { useCodes } from "../../../context/codesContext";
 import { useEffect } from "react";
+import { getAllOrganizations } from "../../services/codesService";
+import { useState } from "react";
+import { useAsyncThrowError } from "../../hooks/useAsyncThrowError";
 
 function Copyright() {
   return (
@@ -63,9 +63,22 @@ const handleSubmit = e => {
 
 export default function RegisterPage() {
   const classes = useStyles();
-  // const { organization } = useCodes();
+  const { throwError } = useAsyncThrowError();
+  const [organization, setOrganization] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data: organizations } = await getAllOrganizations();
+        setOrganization(organizations);
+      } catch (err) {
+        throwError(err);
+      }
+    })();
+  }, []);
 
   // useEffect(() => {
+  //   console.log("organization");
   //   console.log(organization);
   // }, [organization]);
 
@@ -73,7 +86,7 @@ export default function RegisterPage() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography component="h1" variant="h2" marginTop="20px">
+        <Typography component="h1" variant="h2">
           Tom
         </Typography>
         <RegisterImage />
@@ -140,12 +153,6 @@ export default function RegisterPage() {
                 autoComplete="phone"
               />
             </Grid>
-            {/* <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid> */}
           </Grid>
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             Sign Up

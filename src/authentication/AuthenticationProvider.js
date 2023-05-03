@@ -7,6 +7,9 @@ import { AuthState, MsalProvider } from "../context/msalContext";
 import ErrorBoundaryMain from "../providersError/ErrorBoundaryMain";
 import { AsyncErrorContextProvider } from "../context/asyncErrorContext";
 import { ErrorAsyncProvider } from "../providersError/ErrorAsyncProvider";
+import RegisterPage from "./RegisterPage/RegisterPage";
+import LoginPageTom from "./LoginPage/LoginPageTom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 const AuthenticationProvider = ({ children }) => {
   const classes = useStyles();
@@ -28,6 +31,20 @@ const AuthenticationProvider = ({ children }) => {
           } else {
             switch (authState) {
               case AuthState.UnAuthenticated:
+                // TODO: remove from comment to replace old login screen with the new
+                // return (
+                //   <>
+                //     <Switch>
+                //       <Route key={1} exact path="/login">
+                //         <LoginPageTom />
+                //       </Route>
+                //       <Route key={2} exact path="/register">
+                //         <RegisterPage />
+                //       </Route>
+                //       <Redirect from="*" to="/login" />
+                //     </Switch>
+                //   </>
+                // );
                 return <LoginPage />;
 
               case AuthState.InProgress:
