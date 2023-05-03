@@ -288,7 +288,7 @@ export const Calendar = () => {
             onClick={() => handleCancelAppointment(appointmentData["id"])}
             style={{ width: "calc(100% - 40px)", margin: "10px 20px 0 0" }}
           >
-            ביטול הזמנה
+            Cancel Order
           </Button>
         </>
       )}
