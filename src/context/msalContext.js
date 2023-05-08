@@ -2,7 +2,6 @@ import { getUserPhone } from "../services/userService";
 import { checkUser } from "@Services/authenticationService";
 import { useAsyncThrowError } from "../hooks/useAsyncThrowError";
 import { getMsalProps, publicClient } from "../config/authConfig";
-import { getServiceType } from "../services/newAppointmentService";
 import { useState, useEffect, useContext, createContext } from "react";
 
 export const AuthState = {
@@ -43,12 +42,12 @@ export const MsalProvider = ({ children, request, forceLogin = false, handleErro
     try {
       const { name, username } = publicClient.getAllAccounts()[0];
 
-      const [{ data: userPhone }, { data: serviceType }] = await Promise.all([
-        getUserPhone(username.substring(0, 9)),
-        getServiceType(username.substring(0, 9))
+      const [{ data: userPhone }] = await Promise.all([
+        getUserPhone(username.substring(0, 9))
       ]);
 
-      setUser({ serviceType, name, username, id: username.substring(0, 9), phone: userPhone.phone });
+      console.log(name);
+      setUser({ name, username, id: username.substring(0, 9), phone: userPhone.phone });
       setAuthState(AuthState.Authenticated);
     } catch (e) {
       throwError(e);

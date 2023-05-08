@@ -103,8 +103,6 @@ export default forwardRef(function NewAppointmentGuidelines(
     <>
       <div className={style["guidlines"]}>
         {complexGuidelines()}
-        {/* not show entryPermitsGuidelines in order to be generic 17/6/21 */}
-        {/* {entryPermitsGuidelines(user.serviceType)} */}
       </div>
     </>
   );

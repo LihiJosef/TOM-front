@@ -59,7 +59,3 @@ export const createAppointmentAdminNew = (
 export const getUserInfo = appointmentUserId => {
   return axiosInstance.post(`user/getUserInfo`, { appointmentUserId });
 };
-
-export const getServiceType = async userId => {
-  return await axiosInstance.post(`user/getServiceType`, { userId });
-};
