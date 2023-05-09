@@ -3,8 +3,8 @@ export const RegisterImage = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       data-name="Layer 1"
-      width="400"
-      height="250"
+      width="350"
+      height="150"
       viewBox="0 0 689.67004 573.44613"
       //   xmlns:xlink="http://www.w3.org/1999/xlink"
     >

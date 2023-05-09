@@ -1,25 +1,30 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import { RegisterImage } from "./RegisterImage";
 import { useEffect } from "react";
-import { getAllOrganizations } from "../../services/codesService";
 import { useState } from "react";
+import { RegisterImage } from "./RegisterImage";
+import { makeStyles, styled } from "@material-ui/core/styles";
+import { getAllOrganizations } from "../../services/codesService";
 import { useAsyncThrowError } from "../../hooks/useAsyncThrowError";
+import {
+  MenuItem,
+  TextField,
+  Link,
+  Grid,
+  Box,
+  Typography,
+  Container,
+  CssBaseline,
+  Button
+} from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
+import { emailRegex, mobilePhoneRegex } from "../ValidationRegex";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Tom 2023
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -47,24 +52,32 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const handleSubmit = e => {
-  e.preventDefault();
-  const form = new FormData(e.currentTarget);
-  const data = {
-    email: form.get("email"),
-    firstName: form.get("firstName"),
-    lastName: form.get("lastName"),
-    password: form.get("password"),
-    phone: form.get("phone")
-  };
-
-  console.log(data);
-};
+const StyledAlert = styled(Alert)({
+  margin: "10px 0"
+});
 
 export default function RegisterPage() {
   const classes = useStyles();
   const { throwError } = useAsyncThrowError();
-  const [organization, setOrganization] = useState(null);
+  const [error, setError] = useState(false);
+  const [organization, setOrganization] = useState("");
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const data = {
+      email: form.get("email"),
+      firstName: form.get("firstName"),
+      lastName: form.get("lastName"),
+      password: form.get("password"),
+      phone: form.get("phone"),
+      organization: form.get("organization")
+    };
+
+    // console.log(data);
+
+    validateValues(data);
+  };
 
   useEffect(() => {
     (async () => {
@@ -77,10 +90,45 @@ export default function RegisterPage() {
     })();
   }, []);
 
-  // useEffect(() => {
-  //   console.log("organization");
-  //   console.log(organization);
-  // }, [organization]);
+  const validateValues = data => {
+    setError(false);
+    if (!data["firstName"].length || !data["lastName"].length) {
+      setError("Missing name information!");
+      return false;
+    }
+
+    if (!data["phone"].length) {
+      setError("Missing phone number!");
+      return false;
+    }
+
+    if (!data["phone"].match(mobilePhoneRegex)) {
+      setError("Invalid phone number!");
+      return false;
+    }
+
+    if (!data["organization"].length) {
+      setError("Missing organization!");
+      return false;
+    }
+
+    if (!data["email"].match(emailRegex)) {
+      setError("Invalid email address!");
+      return false;
+    }
+
+    if (!data["password"].length) {
+      setError("Missing password!");
+      return false;
+    }
+
+    if (data["password"].length < 6) {
+      setError("Weak password! Password should be at least 6 characters");
+      return false;
+    }
+
+    return true;
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -95,7 +143,7 @@ export default function RegisterPage() {
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={6} sm={6}>
               <TextField
                 autoComplete="fname"
                 name="firstName"
@@ -107,7 +155,7 @@ export default function RegisterPage() {
                 autoFocus
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={6} sm={6}>
               <TextField
                 variant="outlined"
                 required
@@ -117,6 +165,40 @@ export default function RegisterPage() {
                 name="lastName"
                 autoComplete="lname"
               />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="phone"
+                label="Phone Number"
+                type="phone"
+                id="phone"
+                autoComplete="phone"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                select
+                required
+                variant="outlined"
+                fullWidth
+                id="organization"
+                name="organization"
+                label="Organization"
+                defaultValue=""
+              >
+                <MenuItem value="" disabled>
+                  <em>Please select Organization</em>
+                </MenuItem>
+                {organization &&
+                  organization.map(o => (
+                    <MenuItem key={o?.id} value={o?.id}>
+                      {o.name}
+                    </MenuItem>
+                  ))}
+              </TextField>
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -141,19 +223,8 @@ export default function RegisterPage() {
                 autoComplete="current-password"
               />
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="phone"
-                label="Phone Number"
-                type="phone"
-                id="phone"
-                autoComplete="phone"
-              />
-            </Grid>
           </Grid>
+          {error && <StyledAlert severity="error">{error} </StyledAlert>}
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             Sign Up
           </Button>
