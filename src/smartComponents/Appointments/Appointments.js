@@ -1,5 +1,5 @@
 import classNames from "clsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "../../stories/Card/Card";
 import styles from "./appointments.module.scss";
 import { useMsal } from "../../context/msalContext";
@@ -11,7 +11,8 @@ import { propsDesignDialog } from "../../constants/appointments";
 import { dateFormat, weekdays } from "../../constants/date";
 import { useAsyncThrowError } from "../../hooks/useAsyncThrowError";
 import { getDateWithFormat, getHourSpan } from "../../utilities/date";
-import { cancelAppointmentUser } from "../../services/appointmentService";
+import { cancelAppointmentUser, updateRating } from "../../services/appointmentService";
+import Rating from "@material-ui/lab/Rating";
 
 export const Appointments = ({ loading, appointments, setAppointments, canBeCanceled }) => {
   const [open, setOpen] = useState(false);
@@ -20,9 +21,34 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
   const { user } = useMsal();
   const { throwError } = useAsyncThrowError("dialog");
 
-  const handleClick = appointment => {
+  useEffect(() => {
+    console.log("appointments");
+    console.log(appointments);
+  }, [appointments]);
+
+  const handleCancelClick = appointment => {
     setOpen(true);
     setSelectedAppointment(appointment);
+  };
+
+  const handleChangeRatingClick = async (appointment, newRating) => {
+    const updatedAppointments = appointments.map(apt => {
+      if (apt.id === appointment.id) {
+        apt.rating = newRating;
+      }
+
+      return apt;
+    });
+    setAppointments(updatedAppointments);
+    await updateRatingInDb(appointment.id, newRating);
+  };
+
+  const updateRatingInDb = async (appointmentId, newRating) => {
+    try {
+      await updateRating(appointmentId, newRating);
+    } catch (error) {
+      throwError(err);
+    }
   };
 
   const handleCancelAppointment = async () => {
@@ -67,7 +93,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
             <Button
               id={COMPONENT_IDS.CUSTOMER.BUTTONS.CANCEL_ORDER}
               onClick={() => {
-                handleClick(appointment);
+                handleCancelClick(appointment);
               }}
               outline={false}
               color={backgroundColor.darkGreen}
@@ -78,7 +104,22 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
         </div>
       );
     } else {
-      return cardContent(appointment);
+      return (
+        <div className={styles["grid-container"]}>
+          <div className={styles["grid-item"]}>{cardContent(appointment)}</div>
+          <div className={classNames(styles["grid-item"], styles["vl"], styles["centered"])} />
+          <div className={classNames(styles["grid-item"], styles["centered"])}>
+            How was the station?
+            <br />
+            <Rating
+              value={appointment.rating ? appointment.rating : 0}
+              onChange={(event, newValue) => {
+                handleChangeRatingClick(appointment, newValue);
+              }}
+            />
+          </div>
+        </div>
+      );
     }
   };
 

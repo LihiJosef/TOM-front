@@ -18,6 +18,7 @@ export const AsyncErrorContextProvider = ({ children }) => {
     seMessageDialog(e.response?.data?.message?.response?.message);
 
     if (process.env.NODE_ENV !== ENVIRONMENTS.PRODUCTION || process.env.REACT_APP_DEBUG === "true") {
+      console.log("A")
       console.log(e);
     }
 

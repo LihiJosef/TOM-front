@@ -153,13 +153,13 @@ export const CreateAppointmentAdmin = forwardRef(({ refreshAppointments }, ref) 
   return (
     <div>
       {/* todo : create appointment admin */}
-      {/* <Fab
+      <Fab
         id={COMPONENT_IDS.ADMIN.BUTTONS.NEW_ORDER}
         className={style["icon-add"]}
         onClick={() => setOpenDialog(true)}
       >
         <Add />
-      </Fab> */}
+      </Fab>
       <Dialog
         open={openDialog}
         colorLoader={"black"}
