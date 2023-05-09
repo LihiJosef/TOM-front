@@ -11,3 +11,10 @@ export const cancelAppointmentUser = (appointmentId, userId) => {
     appointmentId
   });
 };
+
+export const updateRating = (appointmentId, rating) => {
+  return axiosInstance.put(`appointment/rating`, {
+    appointmentId,
+    rating
+  });
+};
