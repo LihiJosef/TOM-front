@@ -62,6 +62,18 @@ export default function RegisterPage() {
   const [error, setError] = useState(false);
   const [organization, setOrganization] = useState("");
 
+  // load organizations
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data: organizations } = await getAllOrganizations();
+        setOrganization(organizations);
+      } catch (err) {
+        throwError(err);
+      }
+    })();
+  }, []);
+
   const handleSubmit = e => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -78,17 +90,6 @@ export default function RegisterPage() {
 
     validateValues(data);
   };
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data: organizations } = await getAllOrganizations();
-        setOrganization(organizations);
-      } catch (err) {
-        throwError(err);
-      }
-    })();
-  }, []);
 
   const validateValues = data => {
     setError(false);
