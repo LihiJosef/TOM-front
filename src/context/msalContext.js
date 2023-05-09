@@ -1,4 +1,5 @@
 import { getUserPhone } from "../services/userService";
+import { checkUser } from "@Services/authenticationService";
 import { useAsyncThrowError } from "../hooks/useAsyncThrowError";
 import { getMsalProps, publicClient } from "../config/authConfig";
 import { useState, useEffect, useContext, createContext } from "react";
@@ -15,12 +16,27 @@ export const useMsal = () => useContext(MsalContext);
 export const MsalProvider = ({ children, request, forceLogin = false, handleError = null }) => {
   const [authState, setAuthState] = useState(null);
   const [user, setUser] = useState();
+  const [isAdmin, setIsAdmin] = useState();
 
   const { throwError } = useAsyncThrowError();
 
   useEffect(() => {
     handleAuth();
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await checkUser(user?.id);
+        setIsAdmin(true);
+      } catch (e) {
+        if (e.response.status === 401) {
+          setIsAdmin(false);
+        }
+        setIsAdmin(false);
+      }
+    })();
+  }, [user]);
 
   const handleInfo = async () => {
     try {
@@ -70,7 +86,7 @@ export const MsalProvider = ({ children, request, forceLogin = false, handleErro
   };
 
   const logout = () => {
-    // TODO
+    // TODO logout
     publicClient.logoutRedirect();
   };
 
@@ -85,6 +101,7 @@ export const MsalProvider = ({ children, request, forceLogin = false, handleErro
         user,
         login,
         logout,
+        isAdmin,
         saveComplexId
       }}
     >

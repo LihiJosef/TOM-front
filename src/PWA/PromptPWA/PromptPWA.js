@@ -48,9 +48,9 @@ export const PromptPWA = () => {
       onClose={handleClose}
       onOK={handleInstallAccepted}
       {...{
-        title: "האם להתקין את האפלקציה?",
-        massage: "זה יעזור לך לפתוח את המערכת בקלות בפעם הבאה",
-        labelButton: "להתקין",
+        title: "Would you like to install this app?",
+        massage: "It will help you to open the system easily next time",
+        labelButton: "Install",
         PropsButton: {
           size: "x-small",
           outline: true,

@@ -1,7 +1,7 @@
 import { createAxiosInstance } from "../config/axiosInstance";
 const axiosInstance = createAxiosInstance(process.env.REACT_APP_SERVICE_API, "/api/");
 
-export const getActiveAvailableStationsByComplex = (complexId) => {
+export const getActiveAvailableStationsByComplex = complexId => {
   return axiosInstance.get(`station/activeAvailableStationsTypes`, { params: { complexId } });
 };
 
@@ -11,4 +11,8 @@ export const getComplexes = () => {
 
 export const getOrganizations = () => {
   return axiosInstance.get(`organization/organizationCodes`);
+};
+
+export const getAllOrganizations = () => {
+  return axiosInstance.get(`organization/allOrganizationCodes`);
 };

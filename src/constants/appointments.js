@@ -2,7 +2,7 @@ import { COMPONENT_IDS } from "./componentIds";
 import { backgroundColor, transparent } from "../styles/colors";
 
 export const propsDesignDialog = {
-  messages: { cancel: "לא, התחרטתי", ok: "כן, ביטול הזמנה" },
+  messages: { cancel: "Nevermind", ok: "Yes, cancel appointment" },
   propsButtonOk: {
     id: COMPONENT_IDS.CUSTOMER.BUTTONS.CONFIRM_CANCELATION,
     color: "#fff",

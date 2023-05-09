@@ -152,7 +152,7 @@ export const CreateAppointmentAdmin = forwardRef(({ refreshAppointments }, ref) 
 
   return (
     <div>
-      {/* todo */}
+      {/* todo : create appointment admin */}
       {/* <Fab
         id={COMPONENT_IDS.ADMIN.BUTTONS.NEW_ORDER}
         className={style["icon-add"]}

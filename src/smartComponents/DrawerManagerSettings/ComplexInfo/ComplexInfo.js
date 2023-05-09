@@ -30,10 +30,6 @@ export const ComplexInfo = ({ setOpen, complexData, setComplexDataAfterUpdate })
         <u className={style["info-name"]}>טלפון:</u>
         {` ${complexData?.phone}`}
       </Typography>
-      <Typography className={style["info-name-and-value"]}>
-        <u className={style["info-name"]}>Waze:</u>
-        {`${complexData?.waze_link} `}
-      </Typography>
 
       <Typography className={style["info-name-and-value"]}>
         <u className={style["schedule-title"]}>שעות פעילות:</u>

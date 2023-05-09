@@ -16,19 +16,19 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   title: {
-    margin: "calc(max(1.5vh, 6px)) 0 0 0"
+    margin: "calc(max(1.5vh, 6px)) 0 0 0",
+    display: "inline-flex",
+    alignItems: "center",
+    width: "100%",
+    placeContent: " space-between"
   },
+
   noAppointments: {
     textAlign: "center",
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)"
-  },
-
-  prevOrders: {
-    display: "flex",
-    alignItems: "center"
   },
 
   showAll: {

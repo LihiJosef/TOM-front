@@ -2,12 +2,12 @@ import { useState, useRef } from "react";
 
 import { ExitToApp, AccountBox } from "@material-ui/icons";
 import {
-  Avatar,
   List,
-  ListItemIcon,
+  Avatar,
+  Divider,
   ListItem,
   ListItemText,
-  Divider,
+  ListItemIcon,
   ListItemAvatar
 } from "@material-ui/core";
 
@@ -63,6 +63,7 @@ export const InfoUser = () => {
               </ListItemIcon>
               <ListItemText primary="My Orders" />
             </ListItem>
+            {/* todo : logout */}
             {/* <ListItem button onClick={logout}>
               <ListItemIcon>
                 <ExitToApp />
