@@ -21,11 +21,6 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
   const { user } = useMsal();
   const { throwError } = useAsyncThrowError("dialog");
 
-  useEffect(() => {
-    console.log("appointments");
-    console.log(appointments);
-  }, [appointments]);
-
   const handleCancelClick = appointment => {
     setOpen(true);
     setSelectedAppointment(appointment);
@@ -47,7 +42,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
     try {
       await updateRating(appointmentId, newRating);
     } catch (error) {
-      throwError(err);
+      throwError(error);
     }
   };
 
