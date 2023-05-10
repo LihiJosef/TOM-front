@@ -31,7 +31,7 @@ const AuthenticationProvider = ({ children }) => {
           } else {
             switch (authState) {
               case AuthState.UnAuthenticated:
-                // TODO: remove from comment to replace old login screen with the new
+                // TODO:adi alon before start working remove from comment to replace old login screen with the new
                 // return (
                 //   <>
                 //     <Switch>
