@@ -79,23 +79,23 @@ export const buttons = [
   {
     id: COMPONENT_IDS.CUSTOMER.BUTTONS.ORDER_FOR_ME,
     index: orderFor.me,
-    label: "For Me",
+    label: "For me",
     image: <OrderForMe />
+  },
+  {
+    id: COMPONENT_IDS.CUSTOMER.BUTTONS.ORDER_FOR_SOMEONE_ELSE,
+    index: orderFor.someoneElse,
+    label: "For other",
+    image: <OrderForSomeone />
   }
-  // {
-  //   id: COMPONENT_IDS.CUSTOMER.BUTTONS.ORDER_FOR_SOMEONE_ELSE,
-  //   index: orderFor.someoneElse,
-  //   label: "For Other",
-  //   image: <OrderForSomeone />
-  // }
 ];
 
 export const ID_MAX_LENGTH = 9;
 export const PHONE_MAX_LENGTH = 10;
 
 export const titles = {
-  [orderFor.me]: "Your Phone Number",
-  [orderFor.someoneElse]: "בשביל מי העמדה?"
+  [orderFor.someoneElse]: "Fow Whom The Appointment?",
+  [orderFor.me]: "Your Phone Number"
 };
 
 const properKeysForID = new Set(["Backspace", "ArrowRight", "ArrowLeft"]);

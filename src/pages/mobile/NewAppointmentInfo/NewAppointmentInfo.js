@@ -76,13 +76,13 @@ export default forwardRef(function NewAppointmentInfo({ setPropsButtonNext, ...p
       id: COMPONENT_IDS.CUSTOMER.BUTTONS.FIND_STATIONS,
       isDisabled,
       loading: loadingNext,
-      textLabelLoading: "Looking For Free Slots...",
+      textLabelLoading: "Looking for free slots...",
       textLabel:
         !isDisabled || isNullOrUndefinedOrEmpty(complexId) || isNullOrUndefinedOrEmpty(stationId)
-          ? "Find Free Station"
+          ? "Find free station"
           : orderForIndex === orderFor.me
-          ? "Please Fill Phone Number"
-          : "Please Fill Details"
+          ? "Please fill phone number"
+          : "Please fill details"
     });
   }, [userInfo, orderForIndex, loadingNext, stationId, complexId]);
 

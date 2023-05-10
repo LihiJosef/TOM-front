@@ -132,12 +132,11 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
         <div>
           Complex {appointment["Station.Complex.name"]} <br />
         </div>
-        {/* todo : remove comment*/}
-        {/* {user.id !== appointment["user_info"].id && (
+        {user.id !== appointment["user_info"].id && (
           <div>
-            עבור {appointment["user_info"].fullName} <br />
+            For {appointment["user_info"].fullName} <br />
           </div>
-        )} */}
+        )}
         {weekdays[new Date(appointment["start_datetime"]).getDay()]}, {getDate(appointment)}
         <br />
         {getHourSpan(appointment)}

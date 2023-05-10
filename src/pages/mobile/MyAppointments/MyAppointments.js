@@ -63,8 +63,7 @@ export default function MyAppointments() {
     <div className={classes.myAppointments}>
       <div className={classes.title}>
         <Typography classes={{ root: classes.myAppointmentsTitle }}>My Appointments</Typography>
-        {/* todo : uncomment */}
-        {/* <UserMenu /> */}
+        <UserMenu />
       </div>
 
       {loading || appointments?.length > 0 ? (

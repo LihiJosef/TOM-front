@@ -18,14 +18,12 @@ export const DialogError = ({ messageDialog, fullScreen, open, onClose, onOK }) 
       fullScreen={fullScreen}
       isDisplayCloseButton={true}
       {...propsDesignDialogError}
-      {...(fullScreen ? {} : { title: "משהו השתבש..." })}
+      {...(fullScreen ? {} : { title: "Somthing went wrong..." })}
     >
       <div>
-        {fullScreen && <h3 className={styles["title"]}>{"משהו השתבש..."}</h3>}
+        {fullScreen && <h3 className={styles["title"]}>{"Somthing went wrong..."}</h3>}
         <p className={styles["info"]}>
-          <span>
-            {messageDialog ? messageDialog : "אל דאגה, אנחנו מטפלים בזה \n וממליצים לחזור מאוחר יותר"}
-          </span>
+          <span>{messageDialog ? messageDialog : "and recommend to try again later"}</span>
         </p>
       </div>
       <GeneralError />
