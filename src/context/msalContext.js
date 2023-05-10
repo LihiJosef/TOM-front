@@ -1,4 +1,4 @@
-import { getUserPhone } from "../services/userService";
+import { getUserDetails } from "../services/userService";
 import { checkUser } from "@Services/authenticationService";
 import { useAsyncThrowError } from "../hooks/useAsyncThrowError";
 import { getMsalProps, publicClient } from "../config/authConfig";
@@ -26,6 +26,9 @@ export const MsalProvider = ({ children, request, forceLogin = false, handleErro
 
   useEffect(() => {
     (async () => {
+      console.log("user");
+      console.log(user);
+
       try {
         const { data } = await checkUser(user?.id);
         setIsAdmin(true);
@@ -41,8 +44,10 @@ export const MsalProvider = ({ children, request, forceLogin = false, handleErro
   const handleInfo = async () => {
     try {
       const { name, username } = publicClient.getAllAccounts()[0];
-      const { data: userPhone }= await getUserPhone(username.substring(0, 9))
-      setUser({ name, username, id: username.substring(0, 9), phone: userPhone.phone });
+      const {
+        data: { phone, organizationId }
+      } = await getUserDetails(username.substring(0, 9));
+      setUser({ name, username, id: username.substring(0, 9), phone, organizationId });
       setAuthState(AuthState.Authenticated);
     } catch (e) {
       throwError(e);

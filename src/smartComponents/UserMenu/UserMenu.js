@@ -1,12 +1,13 @@
 import { useState, useRef } from "react";
 
-import { List, ListItem, ListItemText } from "@material-ui/core";
 import { ExitToApp, AccountBox, MoreVert } from "@material-ui/icons";
+import { Divider, List, ListItem, ListItemText } from "@material-ui/core";
 
 // Style
 import styles from "./userMenu.module.scss";
 
 // Context
+import { useCodes } from "@Context/codesContext";
 import { useMsal } from "../../context/msalContext";
 
 // Hooks
@@ -15,7 +16,9 @@ import { Link } from "react-router-dom/cjs/react-router-dom";
 
 export const UserMenu = () => {
   const wrapperRef = useRef(null);
-  const { isAdmin, logout } = useMsal();
+  const { organization } = useCodes();
+
+  const { isAdmin, logout, user } = useMsal();
 
   const [openList, setOpenList] = useState(false);
 
@@ -27,6 +30,12 @@ export const UserMenu = () => {
       </div>
       {openList && (
         <div className={styles.root}>
+          <List component="nav">
+            <ListItem>
+              <ListItemText secondary={organization?.find(item => item.id === user.organizationId)?.name} />
+            </ListItem>
+          </List>
+          <Divider />
           <List component="nav">
             {isAdmin && (
               <ListItem button component={Link} to="/admin">

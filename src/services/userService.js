@@ -1,8 +1,8 @@
 import { createAxiosInstance } from "../config/axiosInstance";
 const axiosInstance = createAxiosInstance(process.env.REACT_APP_SERVICE_API, "/api/");
 
-export const getUserPhone = userId => {
-  return axiosInstance.post(`user/getUserPhone`, { userId });
+export const getUserDetails = userId => {
+  return axiosInstance.post(`user/getUserDetails`, { userId });
 };
 
 export const getUsersFullName = userIdArr => {

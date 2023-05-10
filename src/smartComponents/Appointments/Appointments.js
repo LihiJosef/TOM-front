@@ -21,11 +21,6 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
   const { user } = useMsal();
   const { throwError } = useAsyncThrowError("dialog");
 
-  useEffect(() => {
-    console.log("appointments");
-    console.log(appointments);
-  }, [appointments]);
-
   const handleCancelClick = appointment => {
     setOpen(true);
     setSelectedAppointment(appointment);
@@ -47,7 +42,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
     try {
       await updateRating(appointmentId, newRating);
     } catch (error) {
-      throwError(err);
+      throwError(error);
     }
   };
 
@@ -132,12 +127,11 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
         <div>
           Complex {appointment["Station.Complex.name"]} <br />
         </div>
-        {/* todo : remove comment*/}
-        {/* {user.id !== appointment["user_info"].id && (
+        {user.id !== appointment["user_info"].id && (
           <div>
-            עבור {appointment["user_info"].fullName} <br />
+            For {appointment["user_info"].fullName} <br />
           </div>
-        )} */}
+        )}
         {weekdays[new Date(appointment["start_datetime"]).getDay()]}, {getDate(appointment)}
         <br />
         {getHourSpan(appointment)}
