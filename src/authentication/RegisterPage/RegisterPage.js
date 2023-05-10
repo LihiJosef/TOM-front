@@ -4,7 +4,7 @@ import { useState } from "react";
 import { RegisterImage } from "./RegisterImage";
 import { makeStyles, styled } from "@material-ui/core/styles";
 import { getAllOrganizations } from "../../services/codesService";
-import { createUser } from "../../services/createUserService";
+import { createUser } from "../../services/registerService";
 import { useAsyncThrowError } from "../../hooks/useAsyncThrowError";
 import {
   MenuItem,
@@ -94,6 +94,7 @@ export default function RegisterPage() {
       try {
         await createUser(user);
         history.push("/login");
+        // TODO:adialon check more errors
       } catch (err) {
         throwError(err);
       }
