@@ -46,24 +46,16 @@ export const DisableComplex = ({ complexData, setComplexData, setComplexDataAfte
   return (
     <>
       <Typography className={style["disable-title"]}>
-        <u> השבתת מתחם</u>{" "}
+        <u> Disabling Complex </u>{" "}
       </Typography>
       <Typography className={style["disable-second-title"]}>
-        <u>השבתה לתאריכים מסויימים</u>
+        <u>Disable for certain dates</u>
       </Typography>
-      <TextField
-        id="standard-basic"
-        onChange={({ target }) => setDisableReason(target.value)}
-        label="סיבת השבתה"
-        value={disableReason}
-        variant="standard"
-      />
-      <br />
       <div className={style["disable-date-container"]}>
         <TextField
           className={style["disable-start-date"]}
           id="datetime-local"
-          label="תחילת ההשבתה"
+          label="Start Date"
           type="datetime-local"
           value={disableStartDate}
           defaultValue={new Date()}
@@ -74,7 +66,7 @@ export const DisableComplex = ({ complexData, setComplexData, setComplexDataAfte
         />
         <TextField
           id="datetime-local"
-          label="סיום ההשבתה"
+          label="End Date"
           type="datetime-local"
           value={disableEndDate}
           defaultValue={new Date()}
@@ -83,18 +75,28 @@ export const DisableComplex = ({ complexData, setComplexData, setComplexDataAfte
             shrink: true
           }}
         />
+      </div>
+      <div className={style["disable-reason-btn-container"]}>
+        <TextField
+          id="standard-basic"
+          onChange={({ target }) => setDisableReason(target.value)}
+          label="Disable Reason"
+          value={disableReason}
+          variant="standard"
+        />
         <Button
           className={style["add-disable-button"]}
           disabled={!disableEndDate || !disableStartDate || !disableReason}
           variant="contained"
           onClick={addDisableTime}
         >
-          הוספת השבתה
+          Add Disabling
         </Button>
       </div>
-
+      <br />
+      <br />
       <Typography>
-        <u className={style["disable-future"]}>השבתות מתוכננות</u>
+        <u className={style["disable-future"]}>Future Disabling</u>
       </Typography>
       {complexDisabledDates}
     </>

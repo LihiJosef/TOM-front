@@ -59,7 +59,7 @@ export const ComplexManagers = ({ complexData, setComplexData, setComplexDataAft
   return (
     <>
       <Typography>
-        <u className={style["managers-title"]}>מנהלי מתחם</u>
+        <u className={style["managers-title"]}>Complex Admins</u>
       </Typography>
       {complexAdminsNameId && allComplexAdmins}
       <br />
@@ -68,12 +68,12 @@ export const ComplexManagers = ({ complexData, setComplexData, setComplexDataAft
           className={style["add-manager-input"]}
           id="standard-basic"
           onChange={({ target }) => setNewManagerId(target.value)}
-          label="תעודת זהות מנהלן חדש"
+          label="New Admin Email"
           value={newManagerId}
           variant="standard"
         />
         <Button disabled={!newManagerId} variant="contained" onClick={addManager}>
-          הוספת מנהלן
+          Add Admin
         </Button>
       </div>
     </>
