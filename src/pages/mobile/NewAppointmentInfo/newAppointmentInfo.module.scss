@@ -24,10 +24,10 @@
   text-align: center;
   width: 100%;
   Button:first-child {
-    border-radius: 0 2.4rem 2.4rem 0 !important;
+    border-radius: 2.4rem 0 0 2.4rem !important;
   }
   Button:last-child {
-    border-radius: 2.4rem 0 0 2.4rem !important;
+    border-radius: 0 2.4rem 2.4rem 0 !important;
   }
 }
 
