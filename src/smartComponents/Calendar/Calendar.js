@@ -156,13 +156,9 @@ export const Calendar = () => {
 
   const getDataAppointmentTitle = appointment => {
     if (appointment.userId === appointment["userInfo"].id) {
-      // todo: return to prev code
-      // return `${appointment.userInfo.fullName}`;
-      return `${appointment["User.firstName"]} ${appointment["User.lastName"]}`;
+      return `${appointment.userInfo.fullName}`;
     } else {
-      // todo: return to prev code
-      // return `${appointment["User.firstName"]} ${appointment["User.lastName"]} for ${appointment.userInfo.fullName}`;
-      return `${appointment["User.firstName"]} ${appointment["User.lastName"]}`;
+      return `${appointment["User.firstName"]} ${appointment["User.lastName"]} for ${appointment.userInfo.fullName}`;
     }
   };
 
@@ -259,8 +255,7 @@ export const Calendar = () => {
             </div>
           </Grid>
         )}
-        {/**todo: return the commented code*/}
-        {/* <Grid item xs={6}>
+        <Grid item xs={6}>
           {appointmentData.userId !== appointmentData.userInfo.id && (
             <div className={style.textContainer}>
               <Face className={style.icon} />
@@ -275,7 +270,7 @@ export const Calendar = () => {
             <Phone className={style.icon} />
             <span className={style.text}>{appointmentData.userInfo.phone}</span>
           </div>
-        </Grid> */}
+        </Grid>
       </Grid>
       {isFutureDate(appointmentData.startDate) && (
         <>

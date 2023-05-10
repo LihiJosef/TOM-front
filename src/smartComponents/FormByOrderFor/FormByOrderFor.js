@@ -3,13 +3,14 @@ import style from "./formByOrderFor.module.scss";
 import { Input } from "../../stories/Input/Input";
 import { useMsal } from "../../context/msalContext";
 import { useState, useEffect, useRef, useMemo } from "react";
+
+// todo getUserInfo - order fore someone else
 import { getUserInfo } from "../../services/newAppointmentService";
 import { inputs, ID_MAX_LENGTH, orderFor } from "../../constants/newAppointment";
 
 // Hooks
 import { useAsyncThrowError } from "../../hooks/useAsyncThrowError";
 
-const CACHE_TIME = 1000 * 60 * process.env.REACT_APP_CACHE_TIME_MINUTES;
 
 export const FormByOrderFor = ({
   shape,
