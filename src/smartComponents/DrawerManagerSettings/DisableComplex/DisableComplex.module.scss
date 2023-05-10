@@ -20,7 +20,7 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 26px;
-    text-align: right;
+    text-align: left;
     text-decoration-line: underline;
     color: #333333;
 }
@@ -29,7 +29,13 @@
     align-items: center;
     display: flex;
     justify-content: space-around;
+}
 
+.disable-reason-btn-container {
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10px;
 }
 
 .disable-start-date {
@@ -60,12 +66,11 @@
 
 .add-disable-button {
     height: 30px;
-    font-family: 'Heebo';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 12px;
-    margin-right: 20px;
-    align-items: center;
+    // font-family: 'Heebo';
+    // font-style: normal;
+    // font-weight: 700;
+    // font-size: 12px;
+    align-items: right;
     text-align: center;
     letter-spacing: 0.689426px;
     background: #4EC4F7;
