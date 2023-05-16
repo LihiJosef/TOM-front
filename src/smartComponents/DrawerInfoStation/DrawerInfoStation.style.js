@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     position: "sticky",
     zIndex: 1
   },
-  dates: { display: "flex", flexDirection: "column" },
+  dates: { display: "flex", flexDirection: "column", marginTop: 26 },
   disabledData: { display: "flex" }
 });
 
