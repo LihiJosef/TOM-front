@@ -4,6 +4,7 @@ import { useState } from "react";
 import { RegisterImage } from "./RegisterImage";
 import { makeStyles, styled } from "@material-ui/core/styles";
 import { getAllOrganizations } from "../../services/codesService";
+import { createUser } from "../../services/registerService";
 import { useAsyncThrowError } from "../../hooks/useAsyncThrowError";
 import {
   MenuItem,
@@ -18,13 +19,16 @@ import {
 } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { emailRegex, mobilePhoneRegex } from "../ValidationRegex";
+import TomLogo from "@Icons/TomLogo";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
+      <TomLogo />
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Tom 2023
+        Tom
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -61,7 +65,7 @@ export default function RegisterPage() {
   const { throwError } = useAsyncThrowError();
   const [error, setError] = useState(false);
   const [organization, setOrganization] = useState("");
-
+  const history = useHistory();
   // load organizations
   useEffect(() => {
     (async () => {
@@ -74,10 +78,10 @@ export default function RegisterPage() {
     })();
   }, []);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
-    const data = {
+    const user = {
       email: form.get("email"),
       firstName: form.get("firstName"),
       lastName: form.get("lastName"),
@@ -86,9 +90,15 @@ export default function RegisterPage() {
       organization: form.get("organization")
     };
 
-    // console.log(data);
-
-    validateValues(data);
+    if (validateValues(user)) {
+      try {
+        await createUser(user);
+        history.push("/login");
+        // TODO:adialon check more errors
+      } catch (err) {
+        throwError(err);
+      }
+    }
   };
 
   const validateValues = data => {

@@ -83,10 +83,10 @@ export const DrawerManagerSettings = () => {
 
             <div className={style["actions"]}>
               <Button className={style["cancel-btn"]} variant="outlined" onClick={() => setOpen(false)}>
-                ביטול
+                Cancel
               </Button>
               <Button className={style["approve-btn"]} variant="contained" onClick={onSave}>
-                שמירה
+                Save
               </Button>
             </div>
           </div>

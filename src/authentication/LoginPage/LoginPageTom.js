@@ -14,6 +14,7 @@ import TomLogo from "@Icons/TomLogo";
 import { useState } from "react";
 import { Alert } from "@material-ui/lab";
 import { emailRegex } from "../ValidationRegex";
+import { checkLogin } from "../../services/loginService";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -64,17 +65,26 @@ export default function LoginPageTom() {
   const classes = useStyles();
   const [error, setError] = useState(false);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
-    const data = {
+    const user = {
       email: form.get("email"),
       password: form.get("password")
     };
 
     // console.log(data);
 
-    validateValues(data);
+    if (validateValues(user)) {
+      try {
+        const res = await checkLogin(user);
+        console.log(res);
+        // TODO:adialon check for more errors if you have
+        // and naviagte to the main page after authentication
+      } catch (err) {
+        throwError(err);
+      }
+    }
   };
 
   const validateValues = data => {
