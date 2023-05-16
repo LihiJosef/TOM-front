@@ -26,14 +26,11 @@ export const MsalProvider = ({ children, request, forceLogin = false, handleErro
 
   useEffect(() => {
     (async () => {
-      console.log("user");
-      console.log(user);
-
       try {
         const { data } = await checkUser(user?.id);
         setIsAdmin(true);
       } catch (e) {
-        if (e.response.status === 401) {
+      if (e.response.status === 401) {
           setIsAdmin(false);
         }
         setIsAdmin(false);
