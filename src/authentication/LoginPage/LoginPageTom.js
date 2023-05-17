@@ -37,6 +37,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
+  },
+  copyrightText: {
+    marginLeft: 2
   }
 }));
 
@@ -45,11 +48,12 @@ function Copyright() {
   return (
     <Typography className={styleClass.copyright} variant="body2" color="textSecondary" align="center">
       <TomLogo />
-      {"   Copyright © "}
-      TOM
-      {"  "}
-      {new Date().getFullYear()}
-      {"."}
+      <Typography className={styleClass.copyrightText}>
+        Copyright © TOM
+        {"  "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
     </Typography>
   );
 }
@@ -62,6 +66,22 @@ export default function LoginPageTom() {
   const classes = useStyles();
   const [error, setError] = useState(false);
 
+  const validateValues = data => {
+    setError(false);
+
+    if (!data["id"].length) {
+      setError("Missing ID!");
+      return false;
+    }
+
+    if (!data["password"].length) {
+      setError("Missing password!");
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -70,15 +90,15 @@ export default function LoginPageTom() {
       password: form.get("password")
     };
 
-    // console.log(data);
-
-    try {
-      const res = await checkLogin(user);
-      console.log(res);
-      // TODO:adialon check for more errors if you have
-      // and naviagte to the main page after authentication
-    } catch (err) {
-      throwError(err);
+    if (validateValues(user)) {
+      try {
+        const res = await checkLogin(user);
+        console.log(res);
+        // TODO:adialon check for more errors if you have
+        // and naviagte to the main page after authentication
+      } catch (err) {
+        throwError(err);
+      }
     }
   };
 

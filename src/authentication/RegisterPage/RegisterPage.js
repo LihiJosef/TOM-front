@@ -22,17 +22,6 @@ import { mobilePhoneRegex, idRegex } from "../ValidationRegex";
 import TomLogo from "@Icons/TomLogo";
 import { useHistory } from "react-router-dom";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      <TomLogo />
-      {"Copyright © "}
-      TOM {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -50,12 +39,35 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
+  },
+  copyright: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  copyrightText: {
+    marginLeft: 2
   }
 }));
 
 const StyledAlert = styled(Alert)({
   margin: "10px 0"
 });
+
+function Copyright() {
+  const styleClass = useStyles();
+  return (
+    <Typography className={styleClass.copyright} variant="body2" color="textSecondary" align="center">
+      <TomLogo />
+      <Typography className={styleClass.copyrightText}>
+        Copyright © TOM
+        {"  "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
+    </Typography>
+  );
+}
 
 export default function RegisterPage() {
   const classes = useStyles();
