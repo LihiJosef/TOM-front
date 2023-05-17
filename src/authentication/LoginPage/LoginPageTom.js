@@ -46,7 +46,7 @@ function Copyright() {
     <Typography className={styleClass.copyright} variant="body2" color="textSecondary" align="center">
       <TomLogo />
       {"   Copyright © "}
-      Tom
+      TOM
       {"  "}
       {new Date().getFullYear()}
       {"."}
