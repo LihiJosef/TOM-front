@@ -13,7 +13,6 @@ import { LoginImage } from "./LoginImage";
 import TomLogo from "@Icons/TomLogo";
 import { useState } from "react";
 import { Alert } from "@material-ui/lab";
-import { emailRegex } from "../ValidationRegex";
 import { checkLogin } from "../../services/loginService";
 
 const useStyles = makeStyles(theme => ({
@@ -38,6 +37,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
+  },
+  copyrightText: {
+    marginLeft: 2
   }
 }));
 
@@ -46,13 +48,12 @@ function Copyright() {
   return (
     <Typography className={styleClass.copyright} variant="body2" color="textSecondary" align="center">
       <TomLogo />
-      {"   Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Tom
-      </Link>
-      {"  "}
-      {new Date().getFullYear()}
-      {"."}
+      <Typography className={styleClass.copyrightText}>
+        Copyright © TOM
+        {"  "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
     </Typography>
   );
 }
@@ -65,15 +66,29 @@ export default function LoginPageTom() {
   const classes = useStyles();
   const [error, setError] = useState(false);
 
+  const validateValues = data => {
+    setError(false);
+
+    if (!data["id"].length) {
+      setError("Missing ID!");
+      return false;
+    }
+
+    if (!data["password"].length) {
+      setError("Missing password!");
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const user = {
-      email: form.get("email"),
+      id: form.get("id"),
       password: form.get("password")
     };
-
-    // console.log(data);
 
     if (validateValues(user)) {
       try {
@@ -87,33 +102,12 @@ export default function LoginPageTom() {
     }
   };
 
-  const validateValues = data => {
-    setError(false);
-
-    if (!data["email"].match(emailRegex)) {
-      setError("Invalid email address!");
-      return false;
-    }
-
-    if (!data["password"].length) {
-      setError("Missing password!");
-      return false;
-    }
-
-    if (data["password"].length < 6) {
-      setError("Weak password! Password should be at least 6 characters");
-      return false;
-    }
-
-    return true;
-  };
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h2">
-          Tom
+          TOM
         </Typography>
         <LoginImage />
         <Typography component="h1" variant="h5">
@@ -125,10 +119,10 @@ export default function LoginPageTom() {
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="id"
+            label="ID"
+            name="id"
+            autoComplete="id"
             autoFocus
           />
           <TextField

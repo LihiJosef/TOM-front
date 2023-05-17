@@ -68,7 +68,7 @@ export const ComplexManagers = ({ complexData, setComplexData, setComplexDataAft
           className={style["add-manager-input"]}
           id="standard-basic"
           onChange={({ target }) => setNewManagerId(target.value)}
-          label="New Admin Email"
+          label="New Admin ID"
           value={newManagerId}
           variant="standard"
         />
