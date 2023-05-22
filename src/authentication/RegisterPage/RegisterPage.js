@@ -18,23 +18,9 @@ import {
   Button
 } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-import { emailRegex, mobilePhoneRegex } from "../ValidationRegex";
+import { mobilePhoneRegex, idRegex } from "../ValidationRegex";
 import TomLogo from "@Icons/TomLogo";
 import { useHistory } from "react-router-dom";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      <TomLogo />
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Tom
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -53,12 +39,35 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
+  },
+  copyright: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  copyrightText: {
+    marginLeft: 2
   }
 }));
 
 const StyledAlert = styled(Alert)({
   margin: "10px 0"
 });
+
+function Copyright() {
+  const styleClass = useStyles();
+  return (
+    <Typography className={styleClass.copyright} variant="body2" color="textSecondary" align="center">
+      <TomLogo />
+      <Typography className={styleClass.copyrightText}>
+        Copyright © TOM
+        {"  "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
+    </Typography>
+  );
+}
 
 export default function RegisterPage() {
   const classes = useStyles();
@@ -82,7 +91,7 @@ export default function RegisterPage() {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const user = {
-      email: form.get("email"),
+      id: form.get("id"),
       firstName: form.get("firstName"),
       lastName: form.get("lastName"),
       password: form.get("password"),
@@ -123,8 +132,8 @@ export default function RegisterPage() {
       return false;
     }
 
-    if (!data["email"].match(emailRegex)) {
-      setError("Invalid email address!");
+    if (!data["id"].match(idRegex)) {
+      setError("Invalid ID!");
       return false;
     }
 
@@ -146,7 +155,7 @@ export default function RegisterPage() {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h2">
-          Tom
+          TOM
         </Typography>
         <RegisterImage />
         <Typography component="h1" variant="h5">
@@ -216,10 +225,10 @@ export default function RegisterPage() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="id"
+                label="ID"
+                name="id"
+                autoComplete="id"
               />
             </Grid>
             <Grid item xs={12}>

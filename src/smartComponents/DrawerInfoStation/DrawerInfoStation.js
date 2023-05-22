@@ -185,7 +185,7 @@ export const DrawerInfoStation = ({
         shape="square"
         fullWidth={true}
         style={{ minHeight: 110, cursor: "default" }}
-        // onClick={() => setOpen(true)}
+        onClick={() => setOpen(true)}
         backgroundColor={"rgba(0, 0, 0, 0)"}
       >
         <>
@@ -203,7 +203,6 @@ export const DrawerInfoStation = ({
       </Button>
       <Drawer open={open} onClose={() => setOpen(false)} classes={{ paper: style.paper }}>
         <div className={style["button-line"]}>
-
           <div className={style["button-save"]}>
             <Button
               id={COMPONENT_IDS.ADMIN.BUTTONS.SAVE_AND_EXIT_STATION_DRAWER}
