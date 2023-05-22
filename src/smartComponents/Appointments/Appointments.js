@@ -111,6 +111,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
               onChange={(event, newValue) => {
                 handleChangeRatingClick(appointment, newValue);
               }}
+              disabled={appointment.rating != null}
             />
           </div>
         </div>
