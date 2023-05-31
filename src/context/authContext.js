@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
         throw ("Invalid response");
       }
       const user = response.data;
-      setUser({ name: `${user.firstName} ${user.lastName}`, id: user.id, username: user.id, phone: user.phone, organizationId: user.organization_id, teamId: user.team_id });
+      setUser({ name: `${user.first_name} ${user.last_name}`, id: user.id, username: user.id, phone: user.phone, organizationId: user.organization_id, teamId: user.team_id });
       setAuthState(AuthState.Authenticated);
     } catch (e) {
       console.log(e);
@@ -95,8 +95,6 @@ export const AuthProvider = ({ children }) => {
 
 
   const logout = () => {
-    // TODO logout
-    // publicClient.logoutRedirect();
     localStorage.removeItem("token");
     setAuthState(AuthState.UnAuthenticated);
     setUser(null);

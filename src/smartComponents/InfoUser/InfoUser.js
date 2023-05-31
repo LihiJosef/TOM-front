@@ -32,7 +32,6 @@ export const InfoUser = () => {
   const [openList, setOpenList] = useState(false);
 
   useClickOutside(wrapperRef, () => setOpenList(false));
-
   return (
     <div ref={wrapperRef}>
       <div className={styles.divAvatar} onClick={() => setOpenList(!openList)}>
@@ -63,7 +62,6 @@ export const InfoUser = () => {
               </ListItemIcon>
               <ListItemText primary="My Orders" />
             </ListItem>
-            {/* todo : logout */}
             <ListItem button onClick={logout}>
               <ListItemIcon>
                 <ExitToApp />
