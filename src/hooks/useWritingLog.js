@@ -1,5 +1,5 @@
 // Context
-import { useMsal } from "../context/msalContext";
+import { useAuth } from "../context/authContext";
 
 // Config
 import { getAppInsights } from "../config/TelemetryService";
@@ -8,7 +8,7 @@ import { getAppInsights } from "../config/TelemetryService";
 import { SeverityLevel } from "@microsoft/applicationinsights-web";
 
 export function useWritingLog() {
-  const { user } = useMsal();
+  const { user } = useAuth();
 
   const customTrackException = (exception, props = null, severityLevel = SeverityLevel.Error) => {
     const properties = { ...props, user };

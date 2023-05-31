@@ -14,7 +14,7 @@ import TomLogo from "@Icons/TomLogo";
 import { useState } from "react";
 import { Alert } from "@material-ui/lab";
 import { emailRegex } from "../ValidationRegex";
-import { checkLogin } from "../../services/loginService";
+import { useAuth } from "../../context/authContext";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -64,6 +64,7 @@ const StyledAlert = styled(Alert)({
 export default function LoginPageTom() {
   const classes = useStyles();
   const [error, setError] = useState(false);
+  const { login } = useAuth()
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -73,16 +74,12 @@ export default function LoginPageTom() {
       password: form.get("password")
     };
 
-    // console.log(data);
-
     if (validateValues(user)) {
       try {
-        const res = await checkLogin(user);
-        console.log(res);
-        // TODO:adialon check for more errors if you have
-        // and naviagte to the main page after authentication
+        login({userId: user.email, password: user.password}, setError)
       } catch (err) {
-        throwError(err);
+        console.log("err");
+        setError("Invalid userId or password!");
       }
     }
   };

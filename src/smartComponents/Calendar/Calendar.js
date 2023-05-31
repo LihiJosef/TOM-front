@@ -15,7 +15,7 @@ import {
 } from "@devexpress/dx-react-scheduler-material-ui";
 
 // Context
-import { useMsal } from "../../context/msalContext";
+import { useAuth } from "../../context/authContext";
 
 // Styles
 import style from "./calendar.module.scss";
@@ -60,7 +60,7 @@ export const Calendar = () => {
 
   const { complexes, currentComplex, newDisabled, setNewDisabled } = useCodes();
 
-  const { user } = useMsal();
+  const { user } = useAuth();
   const { height } = useMediaQuery();
   const createAppointmentRef = useRef();
   const { throwError } = useAsyncThrowError("dialog");

@@ -2,7 +2,7 @@ import classNames from "clsx";
 import { useState, useEffect } from "react";
 import { Card } from "../../stories/Card/Card";
 import styles from "./appointments.module.scss";
-import { useMsal } from "../../context/msalContext";
+import { useAuth } from "../../context/authContext";
 import { Dialog } from "../../stories/Dialog/Dialog";
 import { Button } from "../../stories/Button/Button";
 import { backgroundColor } from "../../styles/colors";
@@ -18,7 +18,7 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
   const [open, setOpen] = useState(false);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
 
-  const { user } = useMsal();
+  const { user } = useAuth();
   const { throwError } = useAsyncThrowError("dialog");
 
   const handleCancelClick = appointment => {

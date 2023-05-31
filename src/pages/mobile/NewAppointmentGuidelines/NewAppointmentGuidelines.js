@@ -1,7 +1,7 @@
 import { useEffect, useState, forwardRef, useImperativeHandle } from "react";
 
 // Context
-import { useMsal } from "../../../context/msalContext";
+import { useAuth } from "../../../context/authContext";
 
 // Style
 import style from "./newAppointmentGuidelines.module.scss";
@@ -27,7 +27,7 @@ export default forwardRef(function NewAppointmentGuidelines(
   const [loadingNext, setLoadingNext] = useState(false);
   const [loadingBack, setLoadingBack] = useState(false);
 
-  const { user } = useMsal();
+  const { user } = useAuth();
   const { throwError } = useAsyncThrowError("dialog");
 
   useEffect(() => {

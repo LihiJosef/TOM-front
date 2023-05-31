@@ -2,8 +2,7 @@ import { TomLogo } from "../icons";
 import LoginPage from "./LoginPage/LoginPage";
 import { useStyles } from "./Authentication.style";
 import { CodesContextProvider } from "../context/codesContext";
-import { msalConfig, loginRequest } from "../config/authConfig";
-import { AuthState, MsalProvider } from "../context/msalContext";
+import { AuthState, AuthProvider } from "../context/authContext";
 import ErrorBoundaryMain from "../providersError/ErrorBoundaryMain";
 import { AsyncErrorContextProvider } from "../context/asyncErrorContext";
 import { ErrorAsyncProvider } from "../providersError/ErrorAsyncProvider";
@@ -16,7 +15,7 @@ const AuthenticationProvider = ({ children }) => {
 
   return (
     <>
-      <MsalProvider forceLogin={false} config={msalConfig} request={loginRequest}>
+      <AuthProvider>
         {authState => {
           if (process.env.REACT_APP_NOT_AUTH === "true") {
             return (
@@ -32,20 +31,20 @@ const AuthenticationProvider = ({ children }) => {
             switch (authState) {
               case AuthState.UnAuthenticated:
                 // TODO:adi alon before start working remove from comment to replace old login screen with the new
-                // return (
-                //   <>
-                //     <Switch>
-                //       <Route key={1} exact path="/login">
-                //         <LoginPageTom />
-                //       </Route>
-                //       <Route key={2} exact path="/register">
-                //         <RegisterPage />
-                //       </Route>
-                //       <Redirect from="*" to="/login" />
-                //     </Switch>
-                //   </>
-                // );
-                return <LoginPage />;
+                return (
+                  <>
+                    <Switch>
+                      <Route key={1} exact path="/login">
+                        <LoginPageTom />
+                      </Route>
+                      <Route key={2} exact path="/register">
+                        <RegisterPage />
+                      </Route>
+                      <Redirect from="*" to="/login" />
+                    </Switch>
+                  </>
+                );
+                // return <LoginPage />;
 
               case AuthState.InProgress:
                 return (
@@ -67,7 +66,7 @@ const AuthenticationProvider = ({ children }) => {
             }
           }
         }}
-      </MsalProvider>
+      </AuthProvider>
     </>
   );
 };

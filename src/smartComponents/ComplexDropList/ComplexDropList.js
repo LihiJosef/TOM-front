@@ -2,7 +2,7 @@
 import styles from "./complexDropList.module.scss";
 
 // Context
-import { useMsal } from "@Context/msalContext";
+import { useAuth } from "@Context/authContext";
 import { useCodes } from "../../context/codesContext";
 
 // Design component
@@ -13,7 +13,7 @@ import { COMPONENT_IDS } from "../../constants/componentIds";
 import { propsDesignDropList } from "../../constants/newAppointment";
 
 export const ComplexDropList = ({ complexId, onChangeComplex }) => {
-  const { user } = useMsal();
+  const { user } = useAuth();
   const { organization } = useCodes();
 
   return (

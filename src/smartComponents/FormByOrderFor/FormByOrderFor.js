@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import style from "./formByOrderFor.module.scss";
 import { Input } from "../../stories/Input/Input";
-import { useMsal } from "../../context/msalContext";
+import { useAuth } from "../../context/authContext";
 import { useState, useEffect, useRef, useMemo } from "react";
 
 // todo getUserInfo - order fore someone else
@@ -25,7 +25,7 @@ export const FormByOrderFor = ({
   const [isIdProper, setIsIdProper] = useState(false);
 
   const { throwError } = useAsyncThrowError("dialog");
-  const { user } = useMsal();
+  const { user } = useAuth();
 
   const finalUserId = useMemo(() => (userInfo?.id?.length === ID_MAX_LENGTH ? userInfo.id : ""));
 

@@ -2,7 +2,7 @@ import history from "../../../router/history";
 import useStyles from "./MyAppointments.style";
 import { Typography } from "@material-ui/core";
 import { useState, useEffect, useMemo } from "react";
-import { useMsal } from "../../../context/msalContext";
+import { useAuth } from "../../../context/authContext";
 import { isFutureDate } from "../../../utilities/date";
 import { Button } from "../../../stories/Button/Button";
 import { backgroundColor } from "../../../styles/colors";
@@ -33,7 +33,7 @@ export default function MyAppointments() {
   const pastAppointments = useMemo(() => filterAppointments(appointments, showAll), [appointments, showAll]);
   const [loading, setLoading] = useState(true);
 
-  const { user } = useMsal();
+  const { user } = useAuth();
   const { throwError } = useAsyncThrowError("dialog");
 
   useEffect(() => {

@@ -18,7 +18,7 @@ import styles from "./infoUser.module.scss";
 import { Person } from "../../imgSvg/Person/Person";
 
 // Context
-import { useMsal } from "../../context/msalContext";
+import { useAuth } from "../../context/authContext";
 import { useCodes } from "../../context/codesContext";
 
 // Hooks
@@ -27,7 +27,7 @@ import { useClickOutside } from "../../hooks/useClickOutside";
 export const InfoUser = () => {
   const { complexes } = useCodes();
   const wrapperRef = useRef(null);
-  const { user, logout } = useMsal();
+  const { user, logout } = useAuth();
 
   const [openList, setOpenList] = useState(false);
 

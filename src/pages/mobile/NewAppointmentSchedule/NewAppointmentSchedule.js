@@ -2,7 +2,7 @@ import moment from "moment";
 import { useEffect, useState, forwardRef, useImperativeHandle } from "react";
 
 // Context
-import { useMsal } from "../../../context/msalContext";
+import { useAuth } from "../../../context/authContext";
 
 // Style
 import style from "./newAppointmentSchedule.module.scss";
@@ -50,7 +50,7 @@ export default forwardRef(function NewAppointmentSchedule(
     maxNum: null
   });
 
-  const { user } = useMsal();
+  const { user } = useAuth();
   const { throwError, onAfterCloseDialog } = useAsyncThrowError("dialog");
 
   useEffect(() => {

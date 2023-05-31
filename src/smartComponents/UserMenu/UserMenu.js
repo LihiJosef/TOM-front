@@ -8,7 +8,7 @@ import styles from "./userMenu.module.scss";
 
 // Context
 import { useCodes } from "@Context/codesContext";
-import { useMsal } from "../../context/msalContext";
+import { useAuth } from "../../context/authContext";
 
 // Hooks
 import { useClickOutside } from "../../hooks/useClickOutside";
@@ -18,7 +18,7 @@ export const UserMenu = () => {
   const wrapperRef = useRef(null);
   const { organization } = useCodes();
 
-  const { isAdmin, logout, user } = useMsal();
+  const { isAdmin, logout, user } = useAuth();
 
   const [openList, setOpenList] = useState(false);
 

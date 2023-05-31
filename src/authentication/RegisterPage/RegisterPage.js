@@ -21,6 +21,7 @@ import Alert from "@material-ui/lab/Alert";
 import { emailRegex, mobilePhoneRegex } from "../ValidationRegex";
 import TomLogo from "@Icons/TomLogo";
 import { useHistory } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
 
 function Copyright() {
   return (
@@ -66,6 +67,8 @@ export default function RegisterPage() {
   const [error, setError] = useState(false);
   const [organization, setOrganization] = useState("");
   const history = useHistory();
+  const { setToken } = useAuth();
+
   // load organizations
   useEffect(() => {
     (async () => {
@@ -87,14 +90,15 @@ export default function RegisterPage() {
       lastName: form.get("lastName"),
       password: form.get("password"),
       phone: form.get("phone"),
-      organization: form.get("organization")
+      organization: form.get("organization"),
+      password: form.get("password")
     };
 
     if (validateValues(user)) {
       try {
-        await createUser(user);
-        history.push("/login");
-        // TODO:adialon check more errors
+        const response = await createUser(user);
+        console.log(response.data.token)
+        await setToken(response.data.token);
       } catch (err) {
         throwError(err);
       }

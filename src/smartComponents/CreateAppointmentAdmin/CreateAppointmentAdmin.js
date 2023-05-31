@@ -6,7 +6,7 @@ import { Add } from "@material-ui/icons";
 import moment from "moment";
 
 // Context
-import { useMsal } from "../../context/msalContext";
+import { useAuth } from "../../context/authContext";
 
 // Style
 import style from "./createAppointmentAdmin.module.scss";
@@ -54,7 +54,7 @@ export const CreateAppointmentAdmin = forwardRef(({ refreshAppointments }, ref) 
   const [savingAppointment, setSavingAppointment] = useState(false);
   const [userInfo, setUserInfo] = useState({ id: "", fullName: "", phone: "" });
   const [timesInterval, setTimesInterval] = useState([]);
-  const { user } = useMsal();
+  const { user } = useAuth();
   const { throwError } = useAsyncThrowError("dialog");
 
   const { complexes, currentComplex } = useCodes();

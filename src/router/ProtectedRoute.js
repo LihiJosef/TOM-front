@@ -1,13 +1,13 @@
 import history from "./history";
 import { Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useMsal } from "@Context/msalContext";
+import { useAuth } from "@Context/authContext";
 import { Loader } from "../stories/Loader/Loader";
 import { checkUser } from "@Services/authenticationService";
 import { useAsyncThrowError } from "@Hooks/useAsyncThrowError";
 
 export const ProtectedRoute = ({ isProtected, children, ...props }) => {
-  const { user, saveComplexId } = useMsal();
+  const { user, saveComplexId } = useAuth();
   const { throwError } = useAsyncThrowError();
 
   const [isAuthorized, setIsAuthorized] = useState(null);

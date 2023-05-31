@@ -1,7 +1,7 @@
 import { useState, useEffect, useImperativeHandle, forwardRef } from "react";
 
 // Context
-import { useMsal } from "../../../context/msalContext";
+import { useAuth } from "../../../context/authContext";
 import { useCodes } from "../../../context/codesContext";
 
 // Design component
@@ -50,7 +50,7 @@ const getDefaultStationId = async (defaultOrganization, existStationId) => {
 };
 
 export default forwardRef(function NewAppointmentInfo({ setPropsButtonNext, ...props }, ref) {
-  const { user } = useMsal();
+  const { user } = useAuth();
   const { width } = useMediaQuery();
   const { throwError } = useAsyncThrowError("dialog");
 

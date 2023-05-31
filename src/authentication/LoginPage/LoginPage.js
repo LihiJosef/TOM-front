@@ -11,15 +11,15 @@ import { TextField } from "@material-ui/core";
 import { Login } from "../../imgSvg/Login/Login";
 
 //utils
-import { useMsal } from "../../context/msalContext";
-import { loginRequest } from "../../config/authConfig";
+import { useAuth } from "../../context/authContext";
+// import { loginRequest } from "../../config/authConfig";
 
 // Design component
 import { FixedBottomButton } from "../../smartComponents/FixedBottomButton/FixedBottomButton";
 
 const LoginPage = () => {
   const [userId, setUserId] = useState(null);
-  const { login } = useMsal();
+  const { login } = useAuth();
 
   const handleKeyDown = event => {
     if (event.key === "Enter" && userId?.length === 9) {
