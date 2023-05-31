@@ -97,7 +97,6 @@ export default function RegisterPage() {
     if (validateValues(user)) {
       try {
         const response = await createUser(user);
-        console.log(response.data.token)
         await setToken(response.data.token);
       } catch (err) {
         throwError(err);

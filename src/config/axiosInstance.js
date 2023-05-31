@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const injectTokenInRequest = () => config => {
-  console.log(localStorage.getItem("token"));
   config.headers = {
     authorization: localStorage.getItem("token"),
     "Content-Type": "application/json"

@@ -1,5 +1,4 @@
 import { TomLogo } from "../icons";
-import LoginPage from "./LoginPage/LoginPage";
 import { useStyles } from "./Authentication.style";
 import { CodesContextProvider } from "../context/codesContext";
 import { AuthState, AuthProvider } from "../context/authContext";
@@ -30,7 +29,6 @@ const AuthenticationProvider = ({ children }) => {
           } else {
             switch (authState) {
               case AuthState.UnAuthenticated:
-                // TODO:adi alon before start working remove from comment to replace old login screen with the new
                 return (
                   <>
                     <Switch>
@@ -44,7 +42,6 @@ const AuthenticationProvider = ({ children }) => {
                     </Switch>
                   </>
                 );
-                // return <LoginPage />;
 
               case AuthState.InProgress:
                 return (

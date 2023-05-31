@@ -23,9 +23,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (user) {
       (async () => {
-        console.log("user");
-        console.log(user);
-
         try {
           const { data } = await checkUser(user?.id);
           setIsAdmin(true);
@@ -46,7 +43,6 @@ export const AuthProvider = ({ children }) => {
         throw ("Invalid response");
       }
       const user = response.data;
-      console.log(user);
       setUser({ name: `${user.firstName} ${user.lastName}`, id: user.id, username: user.id, phone: user.phone, organizationId: user.organization_id, teamId: user.team_id });
       setAuthState(AuthState.Authenticated);
     } catch (e) {
@@ -60,7 +56,6 @@ export const AuthProvider = ({ children }) => {
       setAuthState(AuthState.InProgress);
       const accessToken = localStorage.getItem("token");
       if (accessToken) {
-        console.log(accessToken);
         await handleInfo();
       } else {
         setAuthState(AuthState.UnAuthenticated);
@@ -77,7 +72,6 @@ export const AuthProvider = ({ children }) => {
       if (!(response?.data?.token)) {
         throw "Invalid response"
       } else {
-        console.log(response.data.token);
         localStorage.setItem("token", response.data.token);
         await handleInfo();
       }
@@ -90,7 +84,6 @@ export const AuthProvider = ({ children }) => {
 
   const setToken = async token => {
     try {
-      console.log(token);
       setAuthState(AuthState.InProgress);
       localStorage.setItem("token", token);
       await handleInfo();
