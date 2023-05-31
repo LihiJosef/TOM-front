@@ -35,12 +35,12 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
       return apt;
     });
     setAppointments(updatedAppointments);
-    await updateRatingInDb(appointment.station_id, newRating);
+    await updateRatingInDb(appointment.id, appointment.station_id, newRating);
   };
 
-  const updateRatingInDb = async (stationId, newRating) => {
+  const updateRatingInDb = async (appointmentId, stationId, newRating) => {
     try {
-      await updateRating(stationId, newRating);
+      await updateRating(appointmentId, stationId, newRating);
     } catch (error) {
       throwError(error);
     }
