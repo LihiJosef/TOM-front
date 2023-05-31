@@ -35,12 +35,12 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
       return apt;
     });
     setAppointments(updatedAppointments);
-    await updateRatingInDb(appointment.id, newRating);
+    await updateRatingInDb(appointment.station_id, newRating);
   };
 
-  const updateRatingInDb = async (appointmentId, newRating) => {
+  const updateRatingInDb = async (stationId, newRating) => {
     try {
-      await updateRating(appointmentId, newRating);
+      await updateRating(stationId, newRating);
     } catch (error) {
       throwError(error);
     }
@@ -103,16 +103,23 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
         <div className={styles["grid-container"]}>
           <div className={styles["grid-item"]}>{cardContent(appointment)}</div>
           <div className={classNames(styles["grid-item"], styles["vl"], styles["centered"])} />
-          <div className={classNames(styles["grid-item"], styles["centered"])}>
-            How was the station?
-            <br />
-            <Rating
-              value={appointment.rating ? appointment.rating : 0}
-              onChange={(event, newValue) => {
-                handleChangeRatingClick(appointment, newValue);
-              }}
-            />
-          </div>
+          {appointment.user_info.id == user.id ? (
+            <div className={classNames(styles["grid-item"], styles["centered"])}>
+              How was the station?
+              <br />
+              <Rating
+                value={appointment.rating ? appointment.rating : 0}
+                onChange={(event, newValue) => {
+                  handleChangeRatingClick(appointment, newValue);
+                }}
+                disabled={appointment.rating != null}
+              />
+            </div>
+          ) : (
+            <div className={classNames(styles["grid-item"], styles["centered"])}>
+              {`Only ${appointment.user_info.fullName} can rate it`}
+            </div>
+          )}
         </div>
       );
     }

@@ -56,6 +56,6 @@ export const createAppointmentAdminNew = (
   });
 };
 
-export const getUserInfo = appointmentUserId => {
-  return axiosInstance.post(`user/getUserInfo`, { appointmentUserId });
+export const getUserValid = appointmentUserId => {
+  return axiosInstance.get(`user/userValid`, { params: { appointmentUserId } });
 };

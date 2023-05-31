@@ -13,7 +13,6 @@ import { LoginImage } from "./LoginImage";
 import TomLogo from "@Icons/TomLogo";
 import { useState } from "react";
 import { Alert } from "@material-ui/lab";
-import { emailRegex } from "../ValidationRegex";
 import { useAuth } from "../../context/authContext";
 
 const useStyles = makeStyles(theme => ({
@@ -38,6 +37,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
+  },
+  copyrightText: {
+    marginLeft: 2
   }
 }));
 
@@ -46,13 +48,12 @@ function Copyright() {
   return (
     <Typography className={styleClass.copyright} variant="body2" color="textSecondary" align="center">
       <TomLogo />
-      {"   Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Tom
-      </Link>
-      {"  "}
-      {new Date().getFullYear()}
-      {"."}
+      <Typography className={styleClass.copyrightText}>
+        Copyright © TOM
+        {"  "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
     </Typography>
   );
 }
@@ -66,29 +67,11 @@ export default function LoginPageTom() {
   const [error, setError] = useState(false);
   const { login } = useAuth()
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const user = {
-      email: form.get("email"),
-      password: form.get("password")
-    };
-
-    if (validateValues(user)) {
-      try {
-        login({userId: user.email, password: user.password}, setError)
-      } catch (err) {
-        console.log("err");
-        setError("Invalid userId or password!");
-      }
-    }
-  };
-
   const validateValues = data => {
     setError(false);
 
-    if (!data["email"].match(emailRegex)) {
-      setError("Invalid email address!");
+    if (!data["id"].length) {
+      setError("Missing ID!");
       return false;
     }
 
@@ -97,12 +80,25 @@ export default function LoginPageTom() {
       return false;
     }
 
-    if (data["password"].length < 6) {
-      setError("Weak password! Password should be at least 6 characters");
-      return false;
-    }
-
     return true;
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const user = {
+      id: form.get("id"),
+      password: form.get("password")
+    };
+
+    if (validateValues(user)) {
+      try {
+        login({userId: user.id, password: user.password}, setError)
+      } catch (err) {
+        console.log("err");
+        setError("Invalid userId or password!");
+      }
+    }
   };
 
   return (
@@ -110,7 +106,7 @@ export default function LoginPageTom() {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h2">
-          Tom
+          TOM
         </Typography>
         <LoginImage />
         <Typography component="h1" variant="h5">
@@ -122,10 +118,10 @@ export default function LoginPageTom() {
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="id"
+            label="ID"
+            name="id"
+            autoComplete="id"
             autoFocus
           />
           <TextField
