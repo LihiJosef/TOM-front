@@ -125,12 +125,11 @@ export const Toolbar = ({
             </div>
           </div>
         )}
-        {/* todo : change language in component */}
-        {/* {complexes && (
+        {complexes && (
           <div className={styles["manager-settings"]}>
             <DrawerManagerSettings complexId={complexes[currentComplex]?.id} />
           </div>
-        )} */}
+        )}
 
         <Button
           {...design}

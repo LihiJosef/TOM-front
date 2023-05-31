@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 
 // Icons
-import { ManagerSettings } from "../../imgSvg/ManagerSettings/ManagerSettings";
+import SettingsIcon from "@material-ui/icons/Settings";
+
 // Style
 import useStyles from "./DrawerManagerSettings.style";
 import style from "./DrawerManagerSettings.module.scss";
@@ -47,7 +48,7 @@ export const DrawerManagerSettings = () => {
   return (
     <>
       <IconButton onClick={() => setOpen(true)}>
-        <ManagerSettings />
+        <SettingsIcon />
       </IconButton>
 
       <Drawer open={open} onClose={() => setOpen(false)} classes={{ paper: style.paper }}>
@@ -65,12 +66,12 @@ export const DrawerManagerSettings = () => {
                   />
                 </div>
                 <Divider />
-                <div className={style["section"]}>
+                {/* <div className={style["section"]}>
                   <DisableComplex
                     complexData={complexData}
                     setComplexDataAfterUpdate={setComplexDataAfterUpdate}
                   />
-                </div>
+                </div> */}
                 <Divider />
                 <div className={style["section"]}>
                   <ComplexManagers

@@ -26,10 +26,10 @@ export const ComplexInfo = ({ setOpen, complexData, setComplexDataAfterUpdate })
       </div>
 
       <br />
-      <Typography className={style["info-name-and-value"]}>
+      {/* <Typography className={style["info-name-and-value"]}>
         <u className={style["info-name"]}>Phone:</u>
         {` ${complexData?.phone}`}
-      </Typography>
+      </Typography> */}
 
       <Typography className={style["info-name-and-value"]}>
         <u className={style["schedule-title"]}>Opening Hours:</u>
