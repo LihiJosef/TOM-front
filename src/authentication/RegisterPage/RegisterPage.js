@@ -213,7 +213,7 @@ export default function RegisterPage() {
                 defaultValue=""
               >
                 <MenuItem value="" disabled>
-                  <em>Please select Organization</em>
+                  <em>Please Select Organization</em>
                 </MenuItem>
                 {organization &&
                   organization.map(o => (

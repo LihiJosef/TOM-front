@@ -8,7 +8,7 @@ export const PositionsAreOccupied = () => (
   <div className={styles["positions-are-occupied"]}>
     <div className={styles["positions-are-occupied-query"]}>
       <p>
-        <span>לא נמצאה שעה פנויה לביצוע הזמנה בתאריך זה</span>
+        <span>No available hours for this date</span>
       </p>
     </div>
     <PositionsAreOccupiedImg />

@@ -59,7 +59,7 @@ export const DatePicker = ({ minDate, maxDate, objWeekdaysActive, onChange }) =>
     if (data && moment().isSame(date, "year") && moment().isSame(date, "month")) {
       let index = date.date() - 1;
       while (data[index]?.disabled) {
-        setLabelButtonToday("תאריך הקרוב");
+        setLabelButtonToday("Move To Next Available Day");
         index++;
       }
       if (index < data.length) {

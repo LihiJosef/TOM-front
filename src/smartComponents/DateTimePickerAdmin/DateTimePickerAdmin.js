@@ -80,7 +80,7 @@ export const TimePickerAdmin = ({
         getLastAppointmentTime(weekdaysActivityTime[date?.getDay()]?.endHour, assignInterval)
       )
     ) {
-      setMassageError("עבר זמן פעילות");
+      setMassageError("Passed working hours");
     }
   }, [date, assignInterval, weekdaysActivityTime]);
 

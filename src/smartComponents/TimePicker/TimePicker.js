@@ -85,8 +85,7 @@ export const TimePicker = ({
           {!loadingTime && (
             <div className={styles["time-messages"]}>
               <p>
-                {/* <span>{`ארך תור הוא למשך ${intervalTime} דקות, במידה ויש צורך ביותר, ניתן לקבוע תור נוסף`}</span> */}
-                <span>{`The legnth for each appointment is for ${intervalTime} minutes, If necessary, you can schedule another appointment.`}</span>
+                <span>{`The duration for each appointment is for ${intervalTime} minutes. If necessary, you can schedule another appointment.`}</span>
               </p>
             </div>
           )}
