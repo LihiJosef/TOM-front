@@ -105,17 +105,23 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
           <div className={styles["grid-item"]}>{cardContent(appointment)}</div>
           <div className={classNames(styles["grid-item"], styles["vl"], styles["centered"])} />
           {appointment.user_info.id == user.id ? (
-            <div className={classNames(styles["grid-item"], styles["centered"])}>
-              How was the station?
-              <br />
-              <Rating
-                value={appointment.rating ? appointment.rating : 0}
-                onChange={(event, newValue) => {
-                  handleChangeRatingClick(appointment, newValue);
-                }}
-                disabled={appointment.rating != null}
-              />
-            </div>
+            appointment["Station.StationType.name"] == "Personal workstation" ? (
+              <div className={classNames(styles["grid-item"], styles["centered"])}>
+                How was the station?
+                <br />
+                <Rating
+                  value={appointment.rating ? appointment.rating : 0}
+                  onChange={(event, newValue) => {
+                    handleChangeRatingClick(appointment, newValue);
+                  }}
+                  disabled={appointment.rating != null}
+                />
+              </div>
+            ) : (
+              <div className={classNames(styles["grid-item"], styles["centered"])}>
+                {`You can only rate personal workstation`}
+              </div>
+            )
           ) : (
             <div className={classNames(styles["grid-item"], styles["centered"])}>
               {`Only ${appointment.user_info.fullName} can rate it`}
