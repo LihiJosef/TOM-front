@@ -27,14 +27,15 @@ export const Appointments = ({ loading, appointments, setAppointments, canBeCanc
   };
 
   const handleChangeRatingClick = async (appointment, newRating) => {
-    const updatedAppointments = appointments.map(apt => {
-      if (apt.id === appointment.id) {
-        apt.rating = newRating;
-      }
+    setAppointments(prev =>
+      prev.map(apt => {
+        if (apt.id === appointment.id) {
+          apt.rating = newRating;
+        }
 
-      return apt;
-    });
-    setAppointments(updatedAppointments);
+        return apt;
+      })
+    );
     await updateRatingInDb(appointment.id, appointment.station_id, newRating);
   };
 
