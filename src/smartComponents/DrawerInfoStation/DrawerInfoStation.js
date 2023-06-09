@@ -184,8 +184,8 @@ export const DrawerInfoStation = ({
         id={COMPONENT_IDS.ADMIN.BUTTONS.OPEN_STATION_DRAWER}
         shape="square"
         fullWidth={true}
-        style={{ minHeight: 110, cursor: "default" }}
-        onClick={() => setOpen(true)}
+        style={{ minHeight: 110, cursor: "default", padding: 0 }}
+        // onClick={() => setOpen(true)}
         backgroundColor={"rgba(0, 0, 0, 0)"}
       >
         <>
