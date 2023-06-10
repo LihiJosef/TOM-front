@@ -35,7 +35,7 @@ export const Toolbar = ({
   const [stations, setStations] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [filterBySearch, setFilterBySearch] = useState(false);
-  const [stationValue, setStationValue] = useState(null);
+  const [stationValue, setStationValue] = useState(-1);
   const [weekdaysActivityTime, setWeekdaysActivityTime] = useState(null);
   const [menuAnchor, setMenuAnchor] = useState(null);
   const [isComplexMenuOpen, setIsComplexMenuOpen] = useState(false);
@@ -63,7 +63,7 @@ export const Toolbar = ({
           getScheduleAdmin(complexes ? complexes[currentComplex]?.id : "")
         ]);
         setDate(getDateActiveIncrement(Object.keys(weekdaysActivityTime), new Date()));
-        setStationValue(data.length + 1);
+        setStationValue(-1);
         setStations(data);
         setWeekdaysActivityTime(weekdaysActivityTime);
       } catch (err) {
@@ -86,7 +86,7 @@ export const Toolbar = ({
         )
       );
       setSearchMessage(searchValue);
-      setStationValue(stations.length + 2);
+      setStationValue(-2);
       setFilterBySearch(true);
     }
   };
@@ -177,7 +177,7 @@ export const Toolbar = ({
           <DropList
             {...design}
             width={200}
-            value={stationValue ? stationValue : 1}
+            value={stationValue}
             options={
               stations
                 ? [...stations, { id: -1, name: "All Stations" }, { id: -2, name: "", showOption: false }]
