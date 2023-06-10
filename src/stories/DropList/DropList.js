@@ -101,8 +101,8 @@ export const DropList = ({
           }
         >
           {options?.length > 0 &&
-            options.map(({ id, name }) => (
-              <MenuItem key={id} value={id}>
+            options.map(({ id, name, disabled }) => (
+              <MenuItem key={id} value={id} disabled={disabled}>
                 {name}
               </MenuItem>
             ))}

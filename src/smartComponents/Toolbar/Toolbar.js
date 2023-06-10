@@ -180,7 +180,7 @@ export const Toolbar = ({
             value={stationValue}
             options={
               stations
-                ? [...stations, { id: -1, name: "All Stations" }, { id: -2, name: "", showOption: false }]
+                ? [...stations, { id: -1, name: "All Stations" }, { id: -2, name: "", disabled: true }]
                 : []
             }
             onChange={value => {
