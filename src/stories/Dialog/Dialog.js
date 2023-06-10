@@ -8,7 +8,9 @@ import {
   object,
   element,
   oneOfType,
-  elementType
+  elementType,
+  node,
+  arrayOf
 } from "prop-types";
 
 import {
@@ -111,7 +113,7 @@ const propTypesButton = {
   fullWidth: bool,
   colorOutline: string,
   backgroundColor: string,
-  children: oneOfType([element, elementType, number, string]).isRequired,
+  children: oneOfType([element, elementType, number, string, arrayOf(node), node]),
   size: oneOf(["large", "medium", "small", "x-small", "xx-small"])
 };
 
@@ -129,6 +131,6 @@ Dialog.propTypes = {
   title: oneOfType([number, string]),
   propsButtonOk: shape(propTypesButton),
   propsButtonCancel: shape(propTypesButton),
-  children: oneOfType([element, elementType, number, string]),
+  children: oneOfType([element, elementType, number, string, arrayOf(node), node]),
   messages: shape({ cancel: oneOfType([number, string]), ok: oneOfType([number, string]) })
 };
