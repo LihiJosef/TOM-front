@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { string, func, oneOfType, instanceOf, oneOf } from "prop-types";
+import { string, func, oneOfType, instanceOf, oneOf, object } from "prop-types";
 
 // Utilities
 import DateFnsUtils from "@date-io/date-fns";
@@ -96,8 +96,8 @@ export const DateNavigatorOverlay = ({
 DateNavigatorOverlay.propTypes = {
   labelButton: string,
   onChange: func.isRequired,
-  PropsCalendar: "All options props of calender",
+  PropsCalendar: object,
   typeComponentDisplay: oneOf(["Button", "Input"]),
-  PropsComponent: "All options props of button or input",
+  PropsComponent: object,
   date: oneOfType([instanceOf(Date), string]).isRequired
 };
