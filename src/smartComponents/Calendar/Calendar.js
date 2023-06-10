@@ -81,22 +81,24 @@ export const Calendar = () => {
             default: {}
           };
 
-          stations.forEach(station => {
-            const objStation = {
-              ...station,
-              text: station["StationType.name"],
-              color: colorTypeStation[station.station_type_id]
-            };
-            objStations[station.station_type_id] = [
-              ...(objStations[station.station_type_id] || []),
-              { ...objStation }
-            ];
-            objStations.default[station.id] = {
-              ...objStation,
-              fieldNameOnObjFilter: station.station_type_id,
-              indexOnObjFilter: objStations[station.station_type_id]?.length - 1 ?? 0
-            };
-          });
+          stations
+            .sort((a, b) => a.id - b.id)
+            .forEach(station => {
+              const objStation = {
+                ...station,
+                text: station["StationType.name"],
+                color: colorTypeStation[station.station_type_id]
+              };
+              objStations[station.station_type_id] = [
+                ...(objStations[station.station_type_id] || []),
+                { ...objStation }
+              ];
+              objStations.default[station.id] = {
+                ...objStation,
+                fieldNameOnObjFilter: station.station_type_id,
+                indexOnObjFilter: objStations[station.station_type_id]?.length - 1 ?? 0
+              };
+            });
 
           setDisableStationsTimesState(disableStationsTimes);
           setDataStations(Object.values(objStations.default));
