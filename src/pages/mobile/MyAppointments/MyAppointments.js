@@ -76,22 +76,22 @@ export default function MyAppointments() {
               canBeCanceled={true}
             />
           }
-
-          <div className={classes.title}>
-            <Typography classes={{ root: classes.myAppointmentsTitle }}>Past Appointments</Typography>
-            <div>
-              <Typography onClick={toggleShowAll} classes={{ root: classes.showAll }}>
-                Show All
-              </Typography>
+          {pastAppointments.length > 0 && (<>
+            <div className={classes.title}>
+              <Typography classes={{ root: classes.myAppointmentsTitle }}>Past Appointments</Typography>
+              <div>
+                <Typography onClick={toggleShowAll} classes={{ root: classes.showAll }}>
+                  Show All
+                </Typography>
+              </div>
             </div>
-          </div>
-          {pastAppointments.length > 0 && (
             <Appointments
               loading={loading}
               appointments={pastAppointments}
               setAppointments={setAppointments}
               canBeCanceled={false}
             />
+          </>
           )}
           <FixedBottomButton
             id={COMPONENT_IDS.CUSTOMER.BUTTONS.NEW_ORDER}
